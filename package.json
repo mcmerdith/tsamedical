@@ -9,10 +9,13 @@
     "foundation-sites": "^6.6.3",
     "jquery": "^3.5.1",
     "sass-loader": "^10.1.0",
-    "turbolinks": "^5.2.0"
+    "turbolinks": "^5.2.0",
+    "webpacker": "^4.6.0",
+    "what-input": "^5.2.10"
   },
   "version": "0.1.0",
   "devDependencies": {
-    "webpack-dev-server": "^3.11.1"
+    "webpack-dev-server": "^3.11.1",
+    "yarn": "^1.22.10"
   }
 }
