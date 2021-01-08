@@ -10,8 +10,6 @@ Dir.chdir(APP_ROOT) do
 
   end
 
-  print(executable_path + "\n");
-
   if executable_path
     exec File.expand_path(Pathname.new(executable_path).join('yarn')), *ARGV
   else
