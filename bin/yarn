@@ -7,7 +7,10 @@ Dir.chdir(APP_ROOT) do
     normalized_path = File.expand_path(path)
 
     normalized_path != __dir__ && File.executable?(Pathname.new(normalized_path).join('yarn'))
+
   end
+
+  print(executable_path + "\n");
 
   if executable_path
     exec File.expand_path(Pathname.new(executable_path).join('yarn')), *ARGV
