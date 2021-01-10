@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>[company] -
+    <title>DocLine -
       <%= @title %></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta charset="utf-8"/>
@@ -24,58 +24,55 @@
       <div class="top-bar" id="responsive-menu">
         <div class="top-bar-left">
           <ul class="dropdown menu" data-dropdown-menu="data-dropdown-menu">
-            <li class="menu-text">[company]</li>
+            <li class="menu-text">DocLine</li>
             <li>
-              <a href="/">Home</a>
+              <%= link_to "Home", "/" %>
             </li>
             <li class="has-submenu">
-              <a href="/services/">Services</a>
+              <%= link_to "Services", "/services/" %>
               <ul class="submenu menu vertical" data-submenu="data-submenu">
                 <li>
-                  <a href="/services/#11">sub1</a>
+                  <%= link_to "Medical", "/services/medical" %>
                 </li>
                 <li>
-                  <a href="/services/#22">sub2</a>
+                  <%= link_to "Mental Health / Psychology", "/services/mental" %>
                 </li>
                 <li>
-                  <a href="/services/#33">sub3</a>
+                  <%= link_to "Dermatology", "/services/derma" %>
                 </li>
               </ul>
             </li>
             <li class="has-submenu">
-              <a href="#0">Patient Resources</a>
+              <%= link_to "Providers", "/resources/" %>
               <ul class="submenu menu vertical" data-submenu="data-submenu">
                 <li>
-                  <a href="/resources/#111">sub1</a>
+                  <%= link_to "Who we work with", "/providers/all" %>
                 </li>
                 <li>
-                  <a href="/resources/#222">sub2</a>
-                </li>
-                <li>
-                  <a href="/resources/#333">sub3</a>
+                  <%= link_to "Work with us", "/providers/request" %>
                 </li>
               </ul>
             </li>
             <li>
-              <a href="/contact/">Contact</a>
+              <%= link_to "Contact", "/contact/" %>
             </li>
             <li class="has-submenu">
               <a href="/more/">More</a>
               <ul class="submenu menu vertical" data-submenu="data-submenu">
                 <li>
-                  <a href="/more/tsa.shtml">TSA</a>
+                  <%= link_to "TSA", "/more/tsa" %>
                 </li>
                 <li>
-                  <a href="/more/cte.shtml">CTE</a>
+                  <%= link_to "CTE", "/more/cte" %>
                 </li>
                 <li>
-                  <a href="/more/devs.shtml">About the Developers</a>
+                  <%= link_to "About the Developers", "/more/devs" %>
                 </li>
                 <li>
-                  <a href="/more/site.shtml">About the Site</a>
+                  <%= link_to "About the Site", "/more/site" %>
                 </li>
                 <li>
-                  <a href="/more/company.shtml">About the Company</a>
+                  <%= link_to "About the Company", "/more/company" %>
                 </li>
               </ul>
             </li>
@@ -97,7 +94,5 @@
         <%= yield %>
       </div>
     </div>
-
-    <div id="footer"></div>
   </body>
 </html>
