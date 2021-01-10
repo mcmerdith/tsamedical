@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :providers
   resources :services
+  
   get 'more/tsa'
   get 'more/cte'
   get 'more/devs'
