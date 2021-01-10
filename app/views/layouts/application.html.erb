@@ -31,22 +31,27 @@
             <li class="has-submenu">
               <%= link_to "Services", "/services/" %>
               <ul class="submenu menu vertical" data-submenu="data-submenu">
-                <li>
-                  <%= link_to "Medical", "/services/medical" %>
-                </li>
-                <li>
-                  <%= link_to "Mental Health / Psychology", "/services/mental" %>
-                </li>
-                <li>
-                  <%= link_to "Dermatology", "/services/derma" %>
-                </li>
+                <!-- <li> <%= link_to "Medical Services", "/services/?sort=medical" %> </li> <li> <%= link_to "Mental Health Services", "/services/?sort=mental" %> </li> <li> <%= link_to "Dermatology Services", "/services/?sort=dermatology" %> </li> -->
+
+                <% SERVICE_TYPES.each do |service| %>
+                  <li>
+                    <%= link_to "#{service.capitalize} Services", "/services/?sort=#{service}" %>
+                  </li>
+                <% end %>
               </ul>
             </li>
             <li class="has-submenu">
-              <%= link_to "Providers", "/resources/" %>
+              <%= link_to "Providers", "#" %>
               <ul class="submenu menu vertical" data-submenu="data-submenu">
-                <li>
-                  <%= link_to "Who we work with", "/providers/all" %>
+                <li class="has-submenu">
+                  <%= link_to "Who we work with", "/providers/" %>
+                  <ul class="submenu menu vertical" data-submenu="data-submenu">
+                    <% SERVICE_TYPES.each do |service| %>
+                      <li>
+                        <%= link_to "#{service.capitalize} Providers", "/providers/?sort=#{service}" %>
+                      </li>
+                    <% end %>
+                  </ul>
                 </li>
                 <li>
                   <%= link_to "Work with us", "/providers/request" %>
@@ -89,7 +94,7 @@
       </div>
     </div>
 
-    <div class="content">
+    <div class="content" style="padding-top: 1rem">
       <div class="grid-container">
         <%= yield %>
       </div>

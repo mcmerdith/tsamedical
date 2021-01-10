@@ -1,0 +1,33 @@
+<div class="grid-y grid-margin-y" style="height: 100%">
+  <% @services.each do |service| %>
+    <div class="cell">
+      <div class="card">
+        <div class="card-divider grid-x">
+          <h3 class="cell auto"><%= service.name %>
+            <small class="dark">by:
+              <%= service.provider.name %></small>
+          </h3>
+          <%= link_to "View", service_path(service), class: "cell shrink button", style: "margin-top: auto;margin-bottom: auto;" %>
+        </div>
+        <div class="card-section">
+          <p><%= service.advertisement %></p>
+          <p><%= link_to "More", "#", { data: { toggle: "#{service.id}_more" } } %></p>
+
+          <div id="<%= service.id %>_more" data-toggler=".hide" class="hide card-section">
+            <h5>Description</h5>
+            <p>
+              <%= service.description %>
+            </p>
+            <hr>
+            <h5>Call/Email for a quote</h5>
+            <div class="grid-x">
+              <p class="cell small-6">Phone: <%= service.provider.phone %></p>
+              <p class="cell small-6">Email: <%= service.provider.email %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <% console %>
+  </div>

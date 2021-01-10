@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_10_045206) do
+ActiveRecord::Schema.define(version: 2021_01_10_200238) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "providers", force: :cascade do |t|
     t.string "name"
-    t.string "type"
+    t.string "service_type"
     t.text "description"
     t.string "phone"
     t.string "email"
@@ -32,6 +32,9 @@ ActiveRecord::Schema.define(version: 2021_01_10_045206) do
     t.text "advertisement"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "service_type"
+    t.integer "provider_id"
   end
 
+  add_foreign_key "services", "providers"
 end
