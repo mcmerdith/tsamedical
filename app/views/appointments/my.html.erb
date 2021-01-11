@@ -1,0 +1,17 @@
+<% @title = "Find my Appointments" %>
+
+<h1>Search for Appointments</h1>
+
+<%= form_with model: @appointment, url: '/appointments/search' do |form| %>
+  <div class="input-group">
+    <%= form.label :fname, "First Name", class: "input-group-label" %>
+    <%= form.text_field :fname, class: "input-group-field" %>
+    <%= form.label :lname, "Last Name", class: "input-group-label" %>
+    <%= form.text_field :lname, class: "input-group-field" %>
+  </div>
+
+  <%= form.label :dob, "Date of Birth" %>
+  <%= form.date_field :dob %>
+
+  <%= form.submit "Find", class: "button" %>
+<% end %>

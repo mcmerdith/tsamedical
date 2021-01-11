@@ -1,8 +1,24 @@
 Rails.application.routes.draw do
+  # resources :models
+  # GET       models#index   /models          (models_path)
+  # POST      models#create  /models
+  # GET       models#new     /models/new      (new_model_path)
+  # GET       models#edit    /models/:id/edit (edit_model_path)
+  # GET       models#show    /models/:id      (model_path)
+  # PATCH/PUT models#update  /models/:id
+  # DELETE    models#destroy /models/:id
+
+  # Show all (authenticated) all => index
+  get 'appointments/all'
+  # Search an appointment by name and dob
+  match 'appointments/my', via: [:get, :post]
+  match 'appointments/search', via: [:get, :post]
+  # Define the rest of the routes
+  resources :appointments, except: [:index, :show]
 
   get 'providers/join';
-
   resources :providers
+
   resources :services
 
   # "more" pages

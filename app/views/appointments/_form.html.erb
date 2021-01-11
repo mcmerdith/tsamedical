@@ -1,0 +1,47 @@
+<%= form_with model: appointment do |form| %>
+  <div class="input-group">
+    <%= form.label :fname, "First Name", class: "input-group-label" %>
+    <%= form.text_field :fname, class: "input-group-field" %>
+    <%= form.label :lname, "Last Name", class: "input-group-label" %>
+    <%= form.text_field :lname, class: "input-group-field" %>
+    <% appointment.errors.full_messages_for(:fname).each do |error| %>
+      <div class="callout alert">
+        <p><%= error %></p>
+      </div>
+    <% end %>
+    <% appointment.errors.full_messages_for(:lname).each do |error| %>
+      <div class="callout alert">
+        <p><%= error %></p>
+      </div>
+    <% end %>
+  </div>
+  <p class="help-text">Make sure to enter your name correctly, it will be used to locate your appointment</p>
+
+  <%= form.label :dob %>
+  <%= form.date_field :dob %>
+  <% appointment.errors.full_messages_for(:dob).each do |error| %>
+    <div class="callout alert">
+      <p><%= error %></p>
+    </div>
+  <% end %>
+  <p class="help-text">Make sure to enter your date of birth correctly, it will be used to locate your appointment</p>
+
+  <%= form.label :date %>
+  <%= form.datetime_field :date %>
+  <% appointment.errors.full_messages_for(:date).each do |error| %>
+    <div class="callout alert">
+      <p><%= error %></p>
+    </div>
+  <% end %>
+
+  <%= form.label :service_id %>
+  <%= form.select :service_id, service_options %>
+  <% appointment.errors.full_messages_for(:service_id).each do |error| %>
+    <div class="callout alert">
+      <p><%= error %></p>
+    </div>
+  <% end %>
+
+  <%= form.submit "Schedule", class: "button" %>
+
+<% end %>

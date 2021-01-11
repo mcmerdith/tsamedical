@@ -2,26 +2,6 @@
 
 <h1>Contact Us</h1>
 
-<% # Show the "okay" message and clear the form %>
-<% if @okay %>
-  <div class="callout success">
-    <h5>Success!</h5>
-    <p>Your contact request has been submitted!</p>
-  </div>
-  <% params[:fname] = "" %>
-  <% params[:lname] = "" %>
-  <% params[:email] = "" %>
-  <% params[:content] = "" %>
-<% end %>
-
-<% # Show the "error" message and leave the form %>
-<% if @error %>
-  <div class="callout alert">
-    <h5>Somethings not right.</h5>
-    <p>One or more fields was empty or invalid.</p>
-  </div>
-<% end %>
-
 <%= form_with do |form| %>
   <div class="input-group">
     <%= form.label :fname, "First Name", class: "input-group-label" %>

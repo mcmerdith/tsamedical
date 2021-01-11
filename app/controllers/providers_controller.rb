@@ -27,7 +27,7 @@ class ProvidersController < ApplicationController
     @provider = Provider.new(provider_params)
 
     if @provider.save
-      redirect_to provider_url(@provider), flash: { notice: "Record successfully created!" }
+      redirect_to provider_url(@provider), flash: { success: "Record successfully created!" }
     else
       generate_options()
       render :new
@@ -43,7 +43,7 @@ class ProvidersController < ApplicationController
     @provider = Provider.find(params[:id])
 
     if @provider.update(provider_params)
-      redirect_to provider_url(@provider), flash: { notice: "Record successfully updated!" }
+      redirect_to provider_url(@provider), flash: { success: "Record successfully updated!" }
     else
       generate_options()
       render :edit

@@ -84,10 +84,17 @@
           </ul>
         </div>
         <div class="top-bar-right">
-          <ul class="menu">
-            <li><input type="search" placeholder="Search"></li>
-            <li>
-              <button type="button" class="button">Search</button>
+          <ul class="dropdown menu" data-dropdown-menu="data-dropdown-menu">
+            <li class="has-submenu">
+              <a href="#">Appointments</a>
+              <ul class="submenu menu vertical" data-submenu="data-submenu">
+                <li>
+                  <%= link_to "My Appointments", appointments_my_path %>
+                </li>
+                <li>
+                  <%= link_to "Schedule an Appointment", new_appointment_path %>
+                </li>
+              </ul>
             </li>
           </ul>
         </div>
@@ -96,6 +103,14 @@
 
     <div class="content" style="padding-top: 1rem">
       <div class="grid-container">
+        <% flash.each do |name, msg| %>
+          <div class="callout <%= name %>" data-closable>
+            <button class="close-button" aria-label="Close alert" type="button" data-close>
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <p><%= msg %></p>
+          </div>
+        <% end %>
         <%= yield %>
       </div>
     </div>

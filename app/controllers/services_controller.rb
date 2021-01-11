@@ -24,7 +24,7 @@ class ServicesController < ApplicationController
     @service = Service.new(service_params)
 
     if @service.save
-      redirect_to service_url(@service), flash: { notice: "Record successfully created!" }
+      redirect_to service_url(@service), flash: { success: "Record successfully created!" }
     else
       generate_options()
       render :new
@@ -40,7 +40,7 @@ class ServicesController < ApplicationController
     @service = Service.find(params[:id])
 
     if @service.update(service_params)
-      redirect_to service_url(@service), flash: { notice: "Record successfully updated!" }
+      redirect_to service_url(@service), flash: { success: "Record successfully updated!" }
     else
       generate_options()
       render :edit

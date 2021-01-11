@@ -1,11 +1,5 @@
 <% @title = "Providers: #{@provider.name}" %>
 
-<% if flash[:notice] %>
-<div class="callout success">
-  <p id="notice"><%= flash[:notice] %></p>
-</div>
-<% end %>
-
 <h1><%= @provider.name %></h1>
 
 <%= link_to "Show Details", "#", { data: { toggle: "provider-details" }} %>
