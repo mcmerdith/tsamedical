@@ -1,5 +1,6 @@
 class Service < ApplicationRecord
   scope :filter_by_type, -> (t) { where service_type: t }
+  scope :filter_by_provider, -> (p) { where provider_id: p }
 
   # name, type, description, advertisement
   validates :name, presence: true

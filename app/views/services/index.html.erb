@@ -1,6 +1,8 @@
-<div class="grid-y grid-margin-y" style="height: 100%">
+<% @title = "Services" %>
+
+<div class="grid-x grid-margin-x">
   <% @services.each do |service| %>
-    <div class="cell">
+    <div class="cell medium-6">
       <div class="card">
         <div class="card-divider grid-x">
           <h3 class="cell auto"><%= service.name %>
@@ -8,6 +10,7 @@
               <%= service.provider.name %></small>
           </h3>
           <%= link_to "View", service_path(service), class: "cell shrink button", style: "margin-top: auto;margin-bottom: auto;" %>
+          <small class="cell dark">Category: <%= service.service_type.capitalize %></small>
         </div>
         <div class="card-section">
           <p><%= service.advertisement %></p>

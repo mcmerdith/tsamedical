@@ -1,0 +1,42 @@
+<% @title = "Services: #{@service.name}" %>
+
+<% if flash[:notice] %>
+<div class="callout success">
+  <p id="notice"><%= flash[:notice] %></p>
+</div>
+<% end %>
+
+<h1><%= @service.name %></h1>
+
+<hr>
+
+<h3>Provider Details</h3>
+<% provider = @service.provider %>
+<%= link_to "Show Details", "#", { data: { toggle: "provider-details" }} %>
+<div id="provider-details" class="hide" data-toggler=".hide" style="margin-top: 1rem;">
+  <div class="grid-x grid-margin-x grid-padding-x">
+    <div class="cell small-6">
+      <p>Name: <%= provider.name %></p>
+      <p>Website: <%= provider.website %></p>
+    </div>
+    <div class="cell small-6">
+      <p>Phone: <%= provider.phone %></p>
+      <p>Email: <%= provider.email %></p>
+    </div>
+    <div class="cell">
+      <p>Description: <%= provider.description %></p>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<p><%= @service.advertisement %></p>
+<div>
+  <h5>Description</h5>
+  <p>
+    <%= @service.description %>
+  </p>
+  <hr>
+  <h5><%= link_to "Call/Email", "#provider-details" %> for a quote</h5>
+</div>

@@ -17,28 +17,32 @@ class ServicesController < ApplicationController
 
   def new
     @service = Service.new
+    generate_options()
   end
 
   def create
     @service = Service.new(service_params)
 
     if @service.save
-      redirect_to @service
+      redirect_to service_url(@service), flash: { notice: "Record successfully created!" }
     else
+      generate_options()
       render :new
     end
   end
 
   def edit
     @service = Service.find(params[:id])
+    generate_options()
   end
 
   def update
     @service = Service.find(params[:id])
 
     if @service.update(service_params)
-      redirect_to @service
+      redirect_to service_url(@service), flash: { notice: "Record successfully updated!" }
     else
+      generate_options()
       render :edit
     end
   end
@@ -52,6 +56,22 @@ class ServicesController < ApplicationController
 
   private
     def service_params
-      params.require(:service).permit(:name, :type, :description, :advertisement)
+      params.require(:service).permit(:name, :service_type, :description, :advertisement, :provider_id)
+    end
+
+    def generate_options
+      @providers = Provider.all
+
+      @type_options = []
+
+      SERVICE_TYPES.each do |t|
+        @type_options.push([t.capitalize, t])
+      end
+
+      @provider_options = []
+
+      @providers.each do |provider|
+        @provider_options.push(["#{provider.id.to_s} - #{provider.name}", provider.id])
+      end
     end
 end

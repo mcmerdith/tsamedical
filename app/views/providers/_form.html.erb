@@ -1,0 +1,52 @@
+<%= form_with model: provider do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+  <% provider.errors.full_messages_for(:name).each do |error| %>
+    <div class="callout alert">
+      <p><%= error %></p>
+    </div>
+  <% end %>
+
+  <%= form.label :service_type %>
+  <%= form.select :service_type, type_options %>
+  <% provider.errors.full_messages_for(:service_type).each do |error| %>
+    <div class="callout alert">
+      <p><%= error %></p>
+    </div>
+  <% end %>
+
+  <%= form.label :description %>
+  <%= form.text_area :description %>
+  <% provider.errors.full_messages_for(:description).each do |error| %>
+    <div class="callout alert">
+      <p><%= error %></p>
+    </div>
+  <% end %>
+
+  <%= form.label :phone %>
+  <%= form.telephone_field :phone %>
+  <% provider.errors.full_messages_for(:phone).each do |error| %>
+    <div class="callout alert">
+      <p><%= error %></p>
+    </div>
+  <% end %>
+
+  <%= form.label :email %>
+  <%= form.email_field :email %>
+  <% provider.errors.full_messages_for(:email).each do |error| %>
+    <div class="callout alert">
+      <p><%= error %></p>
+    </div>
+  <% end %>
+
+  <%= form.label :website %>
+  <%= form.url_field :website %>
+  <% provider.errors.full_messages_for(:website).each do |error| %>
+    <div class="callout alert">
+      <p><%= error %></p>
+    </div>
+  <% end %>
+
+  <%= form.submit "Save", class: "button" %>
+
+<% end %>
