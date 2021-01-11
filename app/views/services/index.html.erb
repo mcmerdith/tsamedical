@@ -32,5 +32,10 @@
       </div>
     </div>
   <% end %>
-  <% console %>
-  </div>
+
+  <% if @services.length == 0 %>
+    <div class="callout warning">
+      <p>No services found.</p>
+    </div>
+  <% end %>
+</div>

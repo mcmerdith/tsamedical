@@ -36,5 +36,11 @@
       </div>
     </div>
   <% end %>
-  <% console %>
-  </div>
+
+  <% if @providers.length == 0 %>
+    <div class="callout warning">
+      <p>No service providers found.</p>
+    </div>
+  <% end %>
+
+</div>
