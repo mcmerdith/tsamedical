@@ -27,7 +27,11 @@
   </div>
   <div class="card-section">
     <p>Patient: <%= "#{appointment.fname} #{appointment.lname}" %></p>
-    <p>Date: <%= "#{l appointment.date}, #{l appointment.time}" %></p>
+    <% begin %>
+      <p>Date: <%= "#{l appointment.date}, #{l appointment.time}" %></p>
+    <% rescue ActionView::Template::Error => e %>
+      <p>No schedule</p>
+    <% end %>
 
     <% service = Service.find(appointment.service_id) %>
     <p>Service: <%= link_to "#{service.name}, by: #{service.provider.name}", service_path(service) %></p>
