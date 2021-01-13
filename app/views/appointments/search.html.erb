@@ -27,10 +27,10 @@
   </div>
   <div class="card-section">
     <p>Patient: <%= "#{appointment.fname} #{appointment.lname}" %></p>
-    <% begin %>
+    <% if appointment.date && appointment.time %>
       <p>Date: <%= "#{l appointment.date}, #{l appointment.time}" %></p>
-    <% rescue ActionView::Template::Error => e %>
-      <p>No schedule</p>
+    <% else %>
+      <p>Scheduling Error</p>
     <% end %>
 
     <% service = Service.find(appointment.service_id) %>
