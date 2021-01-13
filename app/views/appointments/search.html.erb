@@ -27,7 +27,7 @@
   </div>
   <div class="card-section">
     <p>Patient: <%= "#{appointment.fname} #{appointment.lname}" %></p>
-    <p>Date: <%= l appointment.date %></p>
+    <p>Date: <%= "#{l appointment.date}, #{l appointment.time}" %></p>
 
     <% service = Service.find(appointment.service_id) %>
     <p>Service: <%= link_to "#{service.name}, by: #{service.provider.name}", service_path(service) %></p>
@@ -39,5 +39,7 @@
 <% if @appointments.length == 0 %>
   <div class="callout warning">
     <p>No appoinments found.</p>
+    <small><%= link_to "Didn't find what you're looking for?", "#", data: { toggle: "search-help" } %></small><br>
+    <small id="search-help" class="hide" data-toggler=".hide">Check your spelling, and Date of Birth. If that doesn't fix it, please <%= link_to "contact us", contact_path %></small>
   </div>
 <% end %>

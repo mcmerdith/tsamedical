@@ -8,20 +8,24 @@ class AppointmentsController < ApplicationController
   end
 
   def my
-    if has_session() && !params[:reset]
+    if params[:reset]
+      reset_session
+    end
+
+    if has_session()
       flash.keep
       redirect_to appointments_search_path
     end
   end
 
   def search
-    get_session()
+    get_session
     @appointments = Appointment.find_by_person(@fname, @lname, @dob)
   end
 
   # Resource Routes
   def new
-    generate_services()
+    generate_services
     @appointment = Appointment.new
   end
 
@@ -32,13 +36,13 @@ class AppointmentsController < ApplicationController
       session_update(@appointment.fname, @appointment.lname, @appointment.dob)
       redirect_to appointments_search_path, flash: { success: "Appointment Scheduled!" }
     else
-      generate_services()
+      generate_services
       render :new
     end
   end
 
   def edit
-    generate_services()
+    generate_services
     @appointment = Appointment.find(params[:id])
   end
 
@@ -48,7 +52,7 @@ class AppointmentsController < ApplicationController
     if @appointment.update(appointment_params)
       redirect_to appointments_search_path, flash: { success: "Appointment Modified!" }
     else
-      generate_services()
+      generate_services
       render :edit
     end
   end
@@ -69,7 +73,7 @@ class AppointmentsController < ApplicationController
 
   private
     def appointment_params
-      params.require(:appointment).permit(:fname, :lname, :dob, :date, :service_id)
+      params.require(:appointment).permit(:fname, :lname, :dob, :date, :time, :service_id)
     end
 
     def generate_services

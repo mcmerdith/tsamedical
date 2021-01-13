@@ -8,7 +8,7 @@ class MoreController < ApplicationController
         params[:email].blank? ||
         params[:content].blank? then
         # If the form is missing fields, show a fake error message
-        flash.now[:alert] = "One or more fields was incorrect"
+        flash.now[:alert] = "One or more fields was blank or invalid"
       else
         # If the form is okay, show a fake confirm message
         flash.now[:success] = "Your contact request has been submitted"

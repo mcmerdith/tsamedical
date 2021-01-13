@@ -1,4 +1,6 @@
 <%= form_with model: appointment do |form| %>
+  <h4>Patient Details</h4>
+
   <div class="input-group">
     <%= form.label :fname, "First Name", class: "input-group-label" %>
     <%= form.text_field :fname, class: "input-group-field" %>
@@ -17,8 +19,8 @@
   </div>
   <p class="help-text">Make sure to enter your name correctly, it will be used to locate your appointment</p>
 
-  <%= form.label :dob %>
-  <%= form.date_field :dob %>
+  <%= form.label :dob, "Date of Birth" %>
+  <%= form.date_field :dob, max: Date.today %>
   <% appointment.errors.full_messages_for(:dob).each do |error| %>
     <div class="callout alert">
       <p><%= error %></p>
@@ -26,21 +28,53 @@
   <% end %>
   <p class="help-text">Make sure to enter your date of birth correctly, it will be used to locate your appointment</p>
 
+  <br>
+
+  <h4>Appointment Details</h4>
+
   <%= form.label :date %>
-  <%= form.datetime_field :date %>
+  <%= form.date_field :date, min: Date.today + 1, max: Date.today + 1.months %>
   <% appointment.errors.full_messages_for(:date).each do |error| %>
     <div class="callout alert">
       <p><%= error %></p>
     </div>
   <% end %>
 
+  <%= form.label :time %>
+  <div class="input-group">
+    <%= form.time_select :time,
+        {
+          start_hour: 7,
+          end_hour: 19,
+          minute_step: 30,
+          ampm: true,
+          ignore_date: true
+        },
+        { class: "input-group-field" } %>
+    <% appointment.errors.full_messages_for(:time).each do |error| %>
+      <div class="callout alert">
+        <p><%= error %></p>
+      </div>
+    <% end %>
+  </div>
+
+
+  <p class="help-text">Appointment times will be rounded down to the nearest 30 minute increment</p>
+
   <%= form.label :service_id %>
-  <%= form.select :service_id, service_options %>
+  <%= form.select :service_id, service_options, {}, disabled: @edit ||= false %>
   <% appointment.errors.full_messages_for(:service_id).each do |error| %>
     <div class="callout alert">
       <p><%= error %></p>
     </div>
   <% end %>
+  <p class="help-text">
+    <% if @edit %>
+      Service cannot be changed after the appointment is created. If you need a different service, cancel this appointment and request a new one
+    <% else %>
+      The service that will be provided at the appointment
+    <% end %>
+  </p>
 
   <%= form.submit "Schedule", class: "button" %>
 

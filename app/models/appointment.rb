@@ -3,7 +3,7 @@ class Appointment < ApplicationRecord
   scope :find_by_person, -> (fname, lname, dob) { where(fname: fname).where(lname: lname).where(dob: dob) }
 
   # fname,lname,dob,date
-  validates :fname, :lname, :dob, :date, presence: true
+  validates :fname, :lname, :dob, :date, :time, presence: true
 
   has_one :service
 
