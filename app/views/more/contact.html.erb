@@ -1,17 +1,83 @@
 <% @title = "Contact" %>
 
-<h1>Contact Us</h1>
+  <h1>Contact Us</h1>
 
-<%= form_with do |form| %>
-  <div class="input-group">
-    <%= form.label :fname, "First Name", class: "input-group-label" %>
-    <%= form.text_field :fname, class: "input-group-field", value: params[:fname] %>
-    <%= form.label :lname, "Last Name", class: "input-group-label" %>
-    <%= form.text_field :lname, class: "input-group-field", value: params[:lname] %>
+  <p>If you have any questions, concerns, we would be be happy to assist you however you need</p>
+  <hr>
+  <div class="grid-x grid-margin-x">
+    <div class="card cell medium-5">
+      <div class="card-divider">
+        <h4 class="text-center width-100">By Phone/Email</h4>
+      </div>
+      <div class="card-section">
+        <dl>
+          <dt>Phone&nbsp;<%= load_svg('phone', 'icon-sm', 'Phone Icon') %></dt>
+          <dd class="margin-bottom-1 lead"><%= link_to "+1 (319) 920-8392", "tel:1-319-920-8392" %></dd>
+          <dt>Email&nbsp;<%= load_svg('envelope-open', 'icon-sm', 'Envelope Icon') %></dt>
+          <dd class="lead"><%= link_to "contact@tsamedical.herkokuapp.com", "mailto:contact@tsamedical.herkokuapp.com", class: "text-wrap" %></dd>
+        </dl>
+      </div>
+    </div>
+    <div class="cell medium-1">
+      <h4 class="text-center">or</h4>
+    </div>
+    <div class="card cell medium-5">
+      <div class="card-divider">
+        <h4 class="text-center width-100">By Contact Form&nbsp;<%= load_svg('comment-square', 'icon-sm', 'Comment Icon') %></h4>
+      </div>
+      <div class="card-section">
+        <%= form_with do |form| %>
+        <div class="grid-x">
+          <div class="cell large-6 input-group">
+            <%= form.label :fname, "First Name", class: "input-group-label" %>
+            <%= form.text_field :fname, class: "input-group-field", value: params[:fname] %>
+          </div>
+          <div class="cell large-6 input-group">
+            <%= form.label :lname, "Last Name", class: "input-group-label" %>
+            <%= form.text_field :lname, class: "input-group-field", value: params[:lname] %>
+          </div>
+        </div>
+        <p class="help-text">Your first and last name</p>
+
+        <%= form.label :email, "Email" %>
+        <%= form.email_field :email, value: params[:email] %>
+        <p class="help-text">Your email address. Make sure it's accurate as we use this to respond to you.</p>
+
+        <%= form.label :category, "Category" %>
+        <%= form.select :category, [["General", 0], ["Appointments/Scheduling", 1], ["Feedback", 2], ["Issues (Technical)", 3], ["Issues (Other)", 4]] %>
+        <p class="help-text">The type of request you're submitting</p>
+
+        <%= form.label :content, "Your Inquiry" %>
+        <%= form.text_area :content, value: params[:content] %>
+        <p id="category-help-0" class="help-text">Please be as detailed as possible.</p>
+        <p id="category-help-1" class="help-text hide">If you're referring to an appointment, please provide your Reference ID and Date of Birth.</p>
+        <p id="category-help-2" class="help-text hide">Please provide detailed feedback so our team can best help you</p>
+        <p id="category-help-3" class="help-text hide">If you're reporting a technical glitch or error, include what you were doing up to the error, along with any messages, logs, and timestamps</p>
+        <p id="category-help-4" class="help-text hide">If you're reporting an error, include as much relevant information as you can so our team can best assist you</p>
+
+        <%= form.submit "Submit", class: "button" %>
+      <% end %>
+    </div>
   </div>
-  <%= form.label :email, "Email" %>
-  <%= form.email_field :email, value: params[:email] %>
-  <%= form.label :content, "Your Inquiry" %>
-  <%= form.text_area :content, value: params[:content] %>
-  <%= form.submit "Submit", class: "button" %>
-<% end %>
+  <%= javascript_pack_tag 'contact' %>
+</div>
+
+<hr>
+
+<div class="text-left">
+  <p>
+    <strong>Our office hours are</strong>
+  </p>
+  <div class="grid-x">
+    <div class="cell small-2">Monday-Friday</div>
+    <div class="cell small-10">9AM-5PM</div>
+    <div class="cell small-2">Saturday</div>
+    <div class="cell small-10">10AM-4PM</div>
+    <div class="cell small-2">Sunday</div>
+    <div class="cell small-10">Closed</div>
+  </div>
+  <br>
+  <p>
+    <strong>Our Emergency Room is available 24/7</strong>
+  </p>
+</div>

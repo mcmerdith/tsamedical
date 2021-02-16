@@ -1,49 +1,62 @@
 <% @title = "My Appointments" %>
 
-<h1>Appointment Search</h1>
-<h4>
-  Patient:
-  <% if @all %>
-    All
-  <% else %>
-    <%= "#{@lname}, #{@fname} (#{@dob})" %>
-  <% end %>
-</h4>
+  <h1>Appointment Search</h1>
+  <h4>
+    Patient:
+    <% if session[:admin] %>
+      All
+    <% else %>
+      <%= "#{@lname}, #{@fname} (#{@dob})" %>
+    <% end %>
+  </h4>
 
-<%= form_with url: appointments_my_path, method: :post do |form| %>
+  <%= form_with url: my_appointments_path, method: :post do |form| %>
   <%= form.hidden_field :reset, value: true %>
   <%= form.submit "New Search", class: "button clear" %>
 <% end %>
 
 <% @appointments.each do |appointment| %>
-<div class="card">
-  <div class="card-divider grid-x grid-margin-x">
-    <h3 class="cell auto">
-      Appointment #
-      <%= appointment.id %>
-    </h3>
-    <%= link_to "Edit", "/appointments/#{appointment.id}/edit", class: "cell shrink button", style: "margin-top: auto;margin-bottom: auto;" %>
-    <%= link_to "Delete", "/appointments/#{appointment.id}", method: :delete, class: "cell shrink button alert", style: "margin-top: auto;margin-bottom: auto;" %>
-  </div>
-  <div class="card-section">
-    <p>Patient: <%= "#{appointment.fname} #{appointment.lname}" %></p>
-    <% if appointment.date && appointment.time %>
-      <p>Date: <%= "#{l appointment.date}, #{l appointment.time}" %></p>
-    <% else %>
-      <p>Scheduling Error</p>
-    <% end %>
+  <div class="card">
+    <div class="card-divider grid-x grid-margin-x">
+      <h3 class="cell auto">
+        Appointment #
+        <%= appointment.id %>
+      </h3>
+      <%= link_to session[:admin] ? "Edit (Admin)" : "Edit", edit_appointment_path(appointment), class: "cell shrink button", style: "margin-top: auto;margin-bottom: auto;" %>
+      <%= link_to "Delete", "/appointments/#{appointment.id}", method: :delete, class: "cell shrink button alert", style: "margin-top: auto;margin-bottom: auto;" %>
+    </div>
+    <div class="card-section">
+      <% if session[:admin] %>
+        <p>Confirmed:
+          <%= appointment.confirmed %></p>
+      <% else %>
+        <% if appointment.confirmed %>
+          <div class="callout success">This appointment is confirmed</div>
+        <% else %>
+          <div class="callout primary">This appointment is not confirmed. The service provider will contact you when your appointment is confirmed</div>
+        <% end %>
+      <% end %>
+      <p>Patient:
+        <%= "#{appointment.fname} #{appointment.lname}" %></p>
+      <% if appointment.date && appointment.time %>
+        <p>Date:
+          <%= "#{l appointment.date}, #{l appointment.time}" %></p>
+      <% else %>
+        <p>Scheduling Error</p>
+      <% end %>
 
-    <% service = Service.find(appointment.service_id) %>
-    <p>Service: <%= link_to "#{service.name}, by: #{service.provider.name}", service_path(service) %></p>
-  </div>
-</div>
-<% end %>
+      <% service = Service.find(appointment.service_id) %>
+        <p>Service:
+          <%= link_to "#{service.name}, by: #{service.provider.name}", service_path(service) %></p>
+      </div>
+    </div>
+  <% end %>
 
-
-<% if @appointments.length == 0 %>
-  <div class="callout warning">
-    <p>No appoinments found.</p>
-    <small><%= link_to "Didn't find what you're looking for?", "#", data: { toggle: "search-help" } %></small><br>
-    <small id="search-help" class="hide" data-toggler=".hide">Check your spelling, and Date of Birth. If that doesn't fix it, please <%= link_to "contact us", contact_path %></small>
-  </div>
-<% end %>
+  <% if @appointments.length == 0 %>
+    <div class="callout warning">
+      <p>No appoinments found.</p>
+      <small><%= link_to "Didn't find what you're looking for?", "#", data: { toggle: "search-help" } %></small><br>
+      <small id="search-help" class="hide" data-toggler=".hide">Check your spelling, and Date of Birth. If that doesn't fix it, please
+        <%= link_to "contact us", contact_path %></small>
+    </div>
+  <% end %>

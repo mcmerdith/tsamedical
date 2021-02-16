@@ -44,8 +44,8 @@
   <div class="input-group">
     <%= form.time_select :time,
         {
-          start_hour: 7,
-          end_hour: 19,
+          start_hour: 10,
+          end_hour: 18,
           minute_step: 30,
           ampm: true,
           ignore_date: true
@@ -76,6 +76,12 @@
     <% end %>
   </p>
 
-  <%= form.submit "Schedule", class: "button" %>
+  <% if session[:admin] %>
+  <%= form.label :confirmed, "Appointment Confirmed?", style: "display: inline" %>
+  <%= form.check_box :confirmed %>
+  <br>
+  <% end %>
+
+  <%= form.submit @edit ? "Save" : "Schedule", class: "button" %>
 
 <% end %>

@@ -20,104 +20,104 @@
       console
     end
        %>
-    <div id="header">
-      <div class="title-bar" data-responsive-toggle="responsive-menu" data-hide-for="large">
-        <button class="menu-icon" type="button" data-toggle="responsive-menu"></button>
-        <div class="title-bar-title">Menu</div>
-      </div>
+      <div id="header">
+        <div class="title-bar" data-responsive-toggle="responsive-menu" data-hide-for="large">
+          <button class="menu-icon" type="button" data-toggle="responsive-menu"></button>
+          <div class="title-bar-title">Menu</div>
+        </div>
 
-      <div class="top-bar" id="responsive-menu">
-        <div class="top-bar-left">
-          <ul class="dropdown menu" data-dropdown-menu="data-dropdown-menu">
-            <li class="menu-text">DocLine</li>
-            <li>
-              <%= link_to "Home", "/" %>
-            </li>
-            <li class="has-submenu">
-              <%= link_to "Services", "/services/" %>
-              <ul class="submenu menu vertical" data-submenu="data-submenu">
-                <!-- <li> <%= link_to "Medical Services", "/services/?sort=medical" %> </li> <li> <%= link_to "Mental Health Services", "/services/?sort=mental" %> </li> <li> <%= link_to "Dermatology Services", "/services/?sort=dermatology" %> </li> -->
-
-                <% SERVICE_TYPES.each do |service| %>
-                  <li>
-                    <%= link_to "#{service.capitalize} Services", "/services/?sort=#{service}" %>
+        <div class="top-bar" id="responsive-menu">
+          <div class="top-bar-left">
+            <ul class="dropdown menu" data-dropdown-menu="data-dropdown-menu">
+              <li class="menu-text">DocLine</li>
+              <li>
+                <%= link_to "Home", "/" %>
+              </li>
+              <li class="has-submenu">
+                <%= link_to "Services", "/services/" %>
+                <ul class="submenu menu vertical" data-submenu="data-submenu">
+                  <% SERVICE_TYPES.each do |service| %>
+                    <li>
+                      <%= link_to "#{service.capitalize} Services", "/services/?sort=#{service}" %>
+                    </li>
+                  <% end %>
+                </ul>
+              </li>
+              <li class="has-submenu">
+                <%= link_to "Providers", "#" %>
+                <ul class="submenu menu vertical" data-submenu="data-submenu">
+                  <li class="has-submenu">
+                    <%= link_to "Who we work with", "/providers/" %>
+                    <ul class="submenu menu vertical" data-submenu="data-submenu">
+                      <% SERVICE_TYPES.each do |service| %>
+                        <li>
+                          <%= link_to "#{service.capitalize} Providers", "/providers/?sort=#{service}" %>
+                        </li>
+                      <% end %>
+                    </ul>
                   </li>
-                <% end %>
-              </ul>
-            </li>
-            <li class="has-submenu">
-              <%= link_to "Providers", "#" %>
-              <ul class="submenu menu vertical" data-submenu="data-submenu">
-                <li class="has-submenu">
-                  <%= link_to "Who we work with", "/providers/" %>
-                  <ul class="submenu menu vertical" data-submenu="data-submenu">
-                    <% SERVICE_TYPES.each do |service| %>
-                      <li>
-                        <%= link_to "#{service.capitalize} Providers", "/providers/?sort=#{service}" %>
-                      </li>
-                    <% end %>
-                  </ul>
-                </li>
-                <li>
-                  <%= link_to "Work with us", "/providers/request" %>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <%= link_to "Contact", "/contact/" %>
-            </li>
-            <li class="has-submenu">
-              <a href="/more/">More</a>
-              <ul class="submenu menu vertical" data-submenu="data-submenu">
-                <li>
-                  <%= link_to "TSA", "/more/tsa" %>
-                </li>
-                <li>
-                  <%= link_to "CTE", "/more/cte" %>
-                </li>
-                <li>
-                  <%= link_to "About the Developers", "/more/devs" %>
-                </li>
-                <li>
-                  <%= link_to "About the Site", "/more/site" %>
-                </li>
-                <li>
-                  <%= link_to "About the Company", "/more/company" %>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-        <div class="top-bar-right">
-          <ul class="dropdown menu" data-dropdown-menu="data-dropdown-menu">
-            <li class="has-submenu">
-              <a href="#">Appointments</a>
-              <ul class="submenu menu vertical" data-submenu="data-submenu">
-                <li>
-                  <%= link_to "My Appointments", appointments_my_path %>
-                </li>
-                <li>
-                  <%= link_to "Schedule an Appointment", new_appointment_path %>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="content" style="padding-top: 1rem">
-      <div class="grid-container">
-        <% flash.each do |name, msg| %>
-          <div class="callout <%= name %>" data-closable>
-            <button class="close-button" aria-label="Close alert" type="button" data-close>
-              <span aria-hidden="true">&times;</span>
-            </button>
-            <p><%= msg %></p>
+                  <li>
+                    <%= link_to "Work with us", "/providers/request" %>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <%= link_to "Contact", "/contact/" %>
+              </li>
+              <li class="has-submenu">
+                <a href="/more/">More</a>
+                <ul class="submenu menu vertical" data-submenu="data-submenu">
+                  <li>
+                    <%= link_to "TSA", "/more/tsa" %>
+                  </li>
+                  <li>
+                    <%= link_to "CTE", "/more/cte" %>
+                  </li>
+                  <li>
+                    <%= link_to "About the Developers", "/more/devs" %>
+                  </li>
+                  <li>
+                    <%= link_to "About the Site", "/more/site" %>
+                  </li>
+                  <li>
+                    <%= link_to "About the Company", "/more/company" %>
+                  </li>
+                </ul>
+              </li>
+            </ul>
           </div>
-        <% end %>
-        <%= yield %>
+          <div class="top-bar-right">
+            <ul class="dropdown menu" data-dropdown-menu="data-dropdown-menu">
+              <li class="has-submenu">
+                <a href="#">Appointments</a>
+                <ul class="submenu menu vertical" data-submenu="data-submenu">
+                  <li>
+                    <%= link_to "My Appointments", my_appointments_path %>
+                  </li>
+                  <li>
+                    <%= link_to "Schedule an Appointment", new_appointment_path %>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
-    </div>
-  </body>
-</html>
+
+      <div class="content" style="padding-top: 1rem">
+        <div class="grid-container">
+          <% flash.each do |name, msg| %>
+            <div class="callout <%= name %>" data-closable="data-closable">
+              <button class="close-button" aria-label="Close alert" type="button" data-close="data-close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <p><%= msg %></p>
+            </div>
+          <% end %>
+          <%= yield %>
+        </div>
+      </div>
+
+      <%= raw Rails.application.assets_manifest.find_sources('iconic.svg').first %>
+    </body>
+  </html>

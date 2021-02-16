@@ -6,11 +6,11 @@
       <div class="card">
         <div class="card-divider grid-x">
           <h3 class="cell auto"><%= service.name %>
-            <small class="dark">by:
+            <small class="color-dark-gray">by:
               <%= service.provider.name %></small>
           </h3>
           <%= link_to "View", service_path(service), class: "cell shrink button", style: "margin-top: auto;margin-bottom: auto;" %>
-          <small class="cell dark">Category: <%= service.service_type.capitalize %></small>
+          <small class="cell color-dark-gray">Category: <%= service.service_type.capitalize %></small>
         </div>
         <div class="card-section">
           <p><%= service.advertisement %></p>

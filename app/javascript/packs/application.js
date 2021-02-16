@@ -11,8 +11,19 @@ Rails.start()
 ActiveStorage.start()
 require('jquery');
 require('foundation-sites');
+require('motion-ui');
 
 $(() => {
   Foundation.addToJquery($);
   $(document).foundation();
 });
+
+window.show = function(elem) {
+  const $elem = (elem instanceof jQuery) ? elem : $(elem)
+  $elem.removeClass('hide');
+}
+
+window.hide = function(elem) {
+  const $elem = (elem instanceof jQuery) ? elem : $(elem)
+  $elem.addClass('hide');
+}

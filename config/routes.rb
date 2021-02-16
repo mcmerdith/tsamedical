@@ -8,13 +8,18 @@ Rails.application.routes.draw do
   # PATCH/PUT models#update  /models/:id
   # DELETE    models#destroy /models/:id
 
-  # Show all (authenticated) all => index
-  get 'appointments/all'
-  # Search an appointment by name and dob
-  match 'appointments/my', via: [:get, :post]
-  match 'appointments/search', via: [:get, :post]
   # Define the rest of the routes
-  resources :appointments, except: [:index, :show]
+  resources :appointments, except: [:index, :show] do
+    # Show all (authenticated) all => index
+    collection do
+      get 'all'
+      # Search an appointment by name and dob
+      match 'my', via: [:get, :post]
+      match 'search', via: [:get, :post]
+    end
+    # Edit with an extra field for confirmed
+    #get 'edit_admin', on: :member
+  end
 
   get 'providers/join';
   resources :providers

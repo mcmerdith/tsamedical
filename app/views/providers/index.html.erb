@@ -9,7 +9,7 @@
           <h3 class="cell auto"><%= provider.name %>
           </h3>
           <%= link_to "View", provider_path(provider), class: "cell shrink button", style: "margin-top: auto;margin-bottom: auto;" %>
-          <small class="cell dark"><%= provider.service_type.capitalize %> Services</small>
+          <small class="cell color-dark-gray"><%= provider.service_type.capitalize %> Services</small>
         </div>
         <div class="card-section">
           <p><%= provider.description %></p>

@@ -1,10 +1,10 @@
 class AppointmentsController < ApplicationController
-  http_basic_authenticate_with name: "mcmerdith", password: "password", only: :index
+  http_basic_authenticate_with name: "mcmerdith", password: "password", only: [:index, :edit_admin]
 
   def all
     @appointments = Appointment.all
-    @all = true
-    render :search
+    session[:admin] = true
+    redirect_to search_appointments_path
   end
 
   def my
@@ -12,15 +12,15 @@ class AppointmentsController < ApplicationController
       reset_session
     end
 
-    if has_session()
+    if has_session() || session[:admin]
       flash.keep
-      redirect_to appointments_search_path
+      redirect_to search_appointments_path
     end
   end
 
   def search
     get_session
-    @appointments = Appointment.find_by_person(@fname, @lname, @dob)
+    @appointments = session[:admin] ? Appointment.all : Appointment.find_by_person(@fname, @lname, @dob)
   end
 
   # Resource Routes
@@ -30,11 +30,11 @@ class AppointmentsController < ApplicationController
   end
 
   def create
-    @appointment = Appointment.new(appointment_params)
+    @appointment = Appointment.new(appointment_params_reset_confirmed)
 
     if @appointment.save
       session_update(@appointment.fname, @appointment.lname, @appointment.dob)
-      redirect_to appointments_search_path, flash: { success: "Appointment Scheduled!" }
+      redirect_to search_appointments_path, flash: { success: "Appointment Scheduled!" }
     else
       generate_services
       render :new
@@ -44,13 +44,16 @@ class AppointmentsController < ApplicationController
   def edit
     generate_services
     @appointment = Appointment.find(params[:id])
+    if @appointment.confirmed && !session[:admin]
+      flash.now[:warning] = "Modifying your appointment will require the service provider to re-confirm your appointment"
+    end
   end
 
   def update
     @appointment = Appointment.find(params[:id])
 
-    if @appointment.update(appointment_params)
-      redirect_to appointments_search_path, flash: { success: "Appointment Modified!" }
+    if @appointment.update(session[:admin] ? appointment_params : appointment_params_reset_confirmed)
+      redirect_to search_appointments_path, flash: { success: "Appointment Modified!" }
     else
       generate_services
       render :edit
@@ -61,7 +64,7 @@ class AppointmentsController < ApplicationController
     @appointment = Appointment.find(params[:id])
     @appointment.destroy
 
-    redirect_to appointments_search_path, flash: { success: "Appointment Cancelled!" }
+    redirect_to search_appointments_path, flash: { success: "Appointment Cancelled!" }
   end
 
   # Updating the 3 stored session parameters
@@ -72,8 +75,12 @@ class AppointmentsController < ApplicationController
   end
 
   private
+    def appointment_params_reset_confirmed
+      appointment_params.merge(confirmed: false)
+    end
+
     def appointment_params
-      params.require(:appointment).permit(:fname, :lname, :dob, :date, :time, :service_id)
+      params.require(:appointment).permit(:fname, :lname, :dob, :date, :time, :service_id, :confirmed)
     end
 
     def generate_services

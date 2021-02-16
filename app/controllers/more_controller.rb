@@ -11,7 +11,7 @@ class MoreController < ApplicationController
         flash.now[:alert] = "One or more fields was blank or invalid"
       else
         # If the form is okay, show a fake confirm message
-        flash.now[:success] = "Your contact request has been submitted"
+        flash.now[:success] = "Your contact request has been submitted. Expected response time is 1-3 business days."
         params[:fname] = nil
         params[:lname] = nil
         params[:email] = nil
