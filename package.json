@@ -10,7 +10,7 @@
     "jquery": "^3.5.1",
     "motion-ui": "^2.0.3",
     "sass-loader": "^10.1.0",
-    "sharp": "0.23.2",
+    "sharp": "0.27.1",
     "turbolinks": "^5.2.0",
     "webpacker": "^4.6.0",
     "what-input": "^5.2.10"
