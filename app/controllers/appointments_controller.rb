@@ -1,5 +1,6 @@
 class AppointmentsController < ApplicationController
-  http_basic_authenticate_with name: "mcmerdith", password: "password", only: [:index, :edit_admin]
+  http_basic_authenticate_with name: "doclineadmin", password: "webmaster2021", only: [:index, :edit_admin]
+  before_action :set_appointment, only: [:edit, :update, :destroy]
 
   def all
     @appointments = Appointment.all
@@ -43,15 +44,12 @@ class AppointmentsController < ApplicationController
 
   def edit
     generate_services
-    @appointment = Appointment.find(params[:id])
     if @appointment.confirmed && !session[:admin]
       flash.now[:warning] = "Modifying your appointment will require the service provider to re-confirm your appointment"
     end
   end
 
   def update
-    @appointment = Appointment.find(params[:id])
-
     if @appointment.update(session[:admin] ? appointment_params : appointment_params_reset_confirmed)
       redirect_to search_appointments_path, flash: { success: "Appointment Modified!" }
     else
@@ -61,7 +59,6 @@ class AppointmentsController < ApplicationController
   end
 
   def destroy
-    @appointment = Appointment.find(params[:id])
     @appointment.destroy
 
     redirect_to search_appointments_path, flash: { success: "Appointment Cancelled!" }
@@ -81,6 +78,10 @@ class AppointmentsController < ApplicationController
 
     def appointment_params
       params.require(:appointment).permit(:fname, :lname, :dob, :date, :time, :service_id, :confirmed)
+    end
+
+    def set_appointment
+      @appointment = Appointment.find(params[:id])
     end
 
     def generate_services

@@ -1,0 +1,17 @@
+<h2 class="text-center">Frequently Asked Questions</h2>
+
+<h4>How long does it take to book an appointment?</h4>
+<p>Appointments can be booked over the phone, or online using our <%= link_to "new web form", new_appointment_path %>.</p>
+
+<h4>When will my appointment be confirmed?</h4>
+<p>Our staff will review your request and will try to contact you within 24 hours to confirm your appointment.</p>
+<p class="help-text">Please note that during peak times our staff could take up to 72 hours to process your request.</p>
+
+<h4>Do you accept my insurance?</h4>
+<p>Yes! We accept most insurances please check with your selected provider to see if you are eligible.</p>
+
+
+<% if not defined?(aboutus) %>
+<hr>
+<%= render 'aboutus' %>
+<% end %>

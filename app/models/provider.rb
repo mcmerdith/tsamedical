@@ -1,4 +1,6 @@
 class Provider < ApplicationRecord
+  scope :filter_by_type, -> (t) { where service_type: t }
+
   # name, type, description, phone, email, website
   validates :name, presence: true
   validates :service_type, inclusion: { in: SERVICE_TYPES,
@@ -9,4 +11,5 @@ class Provider < ApplicationRecord
   validates :website, presence: true#, format: { with: /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/, message: "Invalid website" }
 
   has_many :services
+  has_many :doctors
 end

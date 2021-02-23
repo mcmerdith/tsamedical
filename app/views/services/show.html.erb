@@ -1,36 +1,29 @@
 <% @title = "Services: #{@service.name}" %>
 
 <h1><%= @service.name %></h1>
-
-<hr>
-
-<h3>Provider Details</h3>
-<% provider = @service.provider %>
-<%= link_to "Show Details", "#", { data: { toggle: "provider-details" }} %>
-<div id="provider-details" class="hide" data-toggler=".hide" style="margin-top: 1rem;">
-  <div class="grid-x grid-margin-x grid-padding-x">
-    <div class="cell medium-6">
-      <p>Name: <%= provider.name %></p>
-      <p>Website: <%= provider.website %></p>
-    </div>
-    <div class="cell medium-6">
-      <p>Phone: <%= provider.phone %></p>
-      <p>Email: <%= provider.email %></p>
-    </div>
-    <div class="cell">
-      <p>Description: <%= provider.description %></p>
+<div class="grid-x">
+  <div class="cell medium-4">
+    <%= render 'providers/view', provider: @service.provider %>
+  </div>
+  <div class="cell medium-8">
+    <p><%= @service.advertisement %></p>
+    <div>
+      <h5>Description</h5>
+      <p>
+        <%= @service.description %>
+      </p>
+      <hr>
+      <h5><%= link_to "Call/Email", "#provider-details" %> for a quote</h5>
     </div>
   </div>
 </div>
 
-<hr>
 
-<p><%= @service.advertisement %></p>
-<div>
-  <h5>Description</h5>
-  <p>
-    <%= @service.description %>
-  </p>
-  <hr>
-  <h5><%= link_to "Call/Email", "#provider-details" %> for a quote</h5>
+
+<% if session[:siteadmin] %>
+<div class="callout fill-warning">
+  <h5>Admin Tools</h5>
+  <%= link_to "Edit", edit_service_path(@service), class: "button secondary margin-0 rounded" %>
+  <%= link_to "Delete", service_path(@service), class: "button alert margin-0 rounded", method: "delete" %>
 </div>
+<% end %>

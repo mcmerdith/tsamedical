@@ -1,5 +1,6 @@
 class ProvidersController < ApplicationController
-  http_basic_authenticate_with name: "mcmerdith", password: "password", except: [:join, :index, :show]
+  http_basic_authenticate_with name: "webmaster2021", password: "doclineadmin", except: [:join, :index, :show]
+  before_action :set_provider, only: [:show, :edit, :update, :destroy]
 
   def join
   end
@@ -15,7 +16,6 @@ class ProvidersController < ApplicationController
   end
 
   def show
-    @provider = Provider.find(params[:id])
   end
 
   def new
@@ -27,7 +27,7 @@ class ProvidersController < ApplicationController
     @provider = Provider.new(provider_params)
 
     if @provider.save
-      redirect_to provider_url(@provider), flash: { success: "Record successfully created!" }
+      redirect_to provider_path(@provider), flash: { success: "Record successfully created!" }
     else
       generate_options()
       render :new
@@ -35,15 +35,12 @@ class ProvidersController < ApplicationController
   end
 
   def edit
-    @provider = Provider.find(params[:id])
     generate_options()
   end
 
   def update
-    @provider = Provider.find(params[:id])
-
     if @provider.update(provider_params)
-      redirect_to provider_url(@provider), flash: { success: "Record successfully updated!" }
+      redirect_to provider_path(@provider), flash: { success: "Record successfully updated!" }
     else
       generate_options()
       render :edit
@@ -51,15 +48,18 @@ class ProvidersController < ApplicationController
   end
 
   def destroy
-    @provider = Provider.find(params[:id])
     @provider.destroy
 
-    redirect_to root_path
+    redirect_to providers_path, flash: { success: "Record successfully destroyed!" }
   end
 
   private
     def provider_params
       params.require(:provider).permit(:name, :service_type, :description, :phone, :email, :website)
+    end
+
+    def set_provider
+      @provider = Provider.find(params[:id])
     end
 
     def generate_options

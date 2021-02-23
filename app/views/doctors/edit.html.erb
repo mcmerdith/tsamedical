@@ -1,0 +1,5 @@
+<% @title = "Edit Doctor: #{@doctor.id} - #{@doctor.name}" %>
+
+<h1>Editing Doctor</h1>
+
+<%= render 'form', doctor: @doctor, type_options: @type_options, provider_options: @provider_options, services: @services %>

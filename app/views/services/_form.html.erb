@@ -1,44 +1,21 @@
 <%= form_with model: service do |form| %>
   <%= form.label :name %>
   <%= form.text_field :name %>
-  <% service.errors.full_messages_for(:name).each do |error| %>
-    <div class="callout alert">
-      <p><%= error %></p>
-    </div>
-  <% end %>
 
   <%= form.label :service_type %>
   <%= form.select :service_type, type_options %>
-  <% service.errors.full_messages_for(:service_type).each do |error| %>
-    <div class="callout alert">
-      <p><%= error %></p>
-    </div>
-  <% end %>
 
   <%= form.label :advertisement %>
   <%= form.text_area :advertisement %>
-  <% service.errors.full_messages_for(:advertisement).each do |error| %>
-    <div class="callout alert">
-      <p><%= error %></p>
-    </div>
-  <% end %>
 
   <%= form.label :description %>
   <%= form.text_area :description %>
-  <% service.errors.full_messages_for(:description).each do |error| %>
-    <div class="callout alert">
-      <p><%= error %></p>
-    </div>
-  <% end %>
 
   <%= form.label :provider_id %>
   <%= form.select :provider_id, provider_options %>
-  <% service.errors.full_messages_for(:provider_id).each do |error| %>
-    <div class="callout alert">
-      <p><%= error %></p>
-    </div>
-  <% end %>
+
+  <%= form.label :doctor_ids %>
+  <%= form.select :doctor_ids, doctors, {}, {multiple: true} %>
 
   <%= form.submit "Save", class: "button" %>
-
 <% end %>

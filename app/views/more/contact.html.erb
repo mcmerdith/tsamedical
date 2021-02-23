@@ -3,6 +3,7 @@
   <h1>Contact Us</h1>
 
   <p>If you have any questions, concerns, we would be be happy to assist you however you need</p>
+  <p>Please check the <%= link_to "FAQ", "#faq" %> before submitting a contact request</p>
   <hr>
   <div class="grid-x grid-margin-x">
     <div class="card cell medium-5">
@@ -81,3 +82,7 @@
     <strong>Our Emergency Room is available 24/7</strong>
   </p>
 </div>
+
+<hr>
+
+<%= render 'faq', aboutus: false %>

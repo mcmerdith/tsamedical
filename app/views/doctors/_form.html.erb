@@ -1,0 +1,22 @@
+<%= form_with model: doctor do |form| %>
+
+<%= form.label :name %>
+<%= form.text_field :name %>
+
+<%= form.label :profile_picture_url %>
+<%= form.url_field :profile_picture_url %>
+<p class="help-text">Make sure to only use square images</p>
+
+<%= form.hidden_field :date_registered, value: Date.today %>
+
+<%= form.label :service_type %>
+<%= form.select :service_type, type_options %>
+
+<%= form.label :provider_id %>
+<%= form.select :provider_id, provider_options %>
+
+<%= form.label :service_ids %>
+<%= form.select :service_ids, services, {}, {multiple: true} %>
+
+<%= form.submit "Save", class: "button" %>
+<% end %>

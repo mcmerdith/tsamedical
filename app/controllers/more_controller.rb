@@ -1,4 +1,6 @@
 class MoreController < ApplicationController
+  http_basic_authenticate_with name: "webmaster2021", password: "doclineadmin", only: :authenticate
+
   def contact
     # If the form was "submitted", validate params
 
@@ -18,5 +20,15 @@ class MoreController < ApplicationController
         params[:content] = nil
       end
     end
+  end
+
+  def authenticate
+    session[:siteadmin] = true
+    redirect_to root_path
+  end
+
+  def logout
+    session[:siteadmin] = false
+    redirect_to root_path
   end
 end

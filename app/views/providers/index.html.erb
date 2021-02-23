@@ -1,46 +1,56 @@
 <% @title = "Providers" %>
 
-<div class="grid-x grid-margin-x">
-
-  <% @providers.each do |provider| %>
-    <div class="cell medium-6">
-      <div class="card">
-        <div class="card-divider grid-x">
-          <h3 class="cell auto"><%= provider.name %>
-          </h3>
-          <%= link_to "View", provider_path(provider), class: "cell shrink button", style: "margin-top: auto;margin-bottom: auto;" %>
-          <small class="cell color-dark-gray"><%= provider.service_type.capitalize %> Services</small>
-        </div>
-        <div class="card-section">
-          <p><%= provider.description %></p>
-          <hr>
-          <h5>Call/Email for a quote</h5>
-          <div class="grid-x">
-            <p class="cell medium-6">Phone: <%= provider.phone %></p>
-            <p class="cell medium-6">Email: <%= provider.email %></p>
-          </div>
-          <h5>Visit their website</h5>
-          <%= link_to "View Site", "//#{provider.website}" %>
-          <hr>
-          <h5>View available services</h5>
-          <p><%= link_to "More", "#", { data: { toggle: "#{provider.id}_more" } } %></p>
-
-          <div id="<%= provider.id %>_more" data-toggler=".hide" class="hide card-section">
-            <% Service.filter_by_provider(provider.id).each do |service| %>
-              <div>
-                <%= link_to service.name, service_path(service) %>
+  <span data-equalizer="body" data-equalize-on="medium" data-equalize-by-row="true">
+    <div class="grid-x grid-margin-x" data-equalizer="head" data-equalize-on="medium" data-equalize-by-row="true">
+      <% @providers.each do |provider| %>
+        <div class="cell medium-6">
+          <div class="card">
+            <div class="card-divider grid-x" data-equalizer-watch="head">
+              <h3 class="cell auto"><%= provider.name %>
+              </h3>
+              <%= link_to "View", provider_path(provider), class: "cell shrink button", style: "margin-top: auto;margin-bottom: auto;" %>
+              <small class="cell color-dark-gray"><%= provider.service_type.capitalize %>
+                Services</small>
+            </div>
+            <div class="card-section">
+              <p><%= provider.description %></p>
+              <hr>
+              <h5>Call/Email for a quote</h5>
+              <div class="grid-x">
+                <p class="cell medium-6">Phone:
+                  <%= provider.phone %></p>
+                <p class="cell medium-6">Email:
+                  <%= provider.email %></p>
               </div>
+              <h5>Visit their website</h5>
+              <%= link_to "View Site", "//#{provider.website}" %>
+              <hr>
+              <h5>View available services</h5>
+              <p><%= link_to "More", "#", { data: { toggle: "#{provider.id}_more" } } %></p>
+
+              <div id="<%= provider.id %>_more" data-toggler=".hide" class="hide card-section">
+                <% Service.filter_by_provider(provider.id).each do |service| %>
+                  <div>
+                    <%= link_to service.name, service_path(service) %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+            <% if session[:siteadmin] %>
+            <div class="card-section">
+              <h5>Admin Options</h5>
+              <%= link_to "Edit", edit_provider_path(provider), class: "button secondary margin-0 rounded" %>
+              <%= link_to "Delete", provider_path(provider), class: "button alert margin-0 rounded", method: "delete" %>
+            </div>
             <% end %>
           </div>
         </div>
-      </div>
-    </div>
-  <% end %>
+      <% end %>
 
-  <% if @providers.length == 0 %>
-    <div class="callout warning">
-      <p>No service providers found.</p>
+      <% if @providers.length == 0 %>
+        <div class="callout warning">
+          <p>No service providers found.</p>
+        </div>
+      <% end %>
     </div>
-  <% end %>
-
-</div>
+  </span>

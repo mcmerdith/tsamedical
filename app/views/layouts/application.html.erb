@@ -16,7 +16,7 @@
 
   <body>
     <%
-    if Rails.env.development?
+    if Rails.env.development? && session[:siteadmin]
       console
     end
        %>
@@ -31,14 +31,24 @@
             <ul class="dropdown menu" data-dropdown-menu="data-dropdown-menu">
               <li class="menu-text">DocLine</li>
               <li>
-                <%= link_to "Home", "/" %>
+                <%= link_to "Home", root_path %>
               </li>
               <li class="has-submenu">
-                <%= link_to "Services", "/services/" %>
+                <%= link_to "Services", services_path %>
                 <ul class="submenu menu vertical" data-submenu="data-submenu">
                   <% SERVICE_TYPES.each do |service| %>
                     <li>
-                      <%= link_to "#{service.capitalize} Services", "/services/?sort=#{service}" %>
+                      <%= link_to "#{service.capitalize} Services", services_path(sort: service) %>
+                    </li>
+                  <% end %>
+                </ul>
+              </li>
+              <li class="has-submenu">
+                <%= link_to "Doctors", doctors_path %>
+                <ul class="submenu menu vertical" data-submenu="data-submenu">
+                  <% SERVICE_TYPES.each do |service| %>
+                    <li>
+                      <%= link_to "#{service.capitalize} Doctors", doctors_path(sort: service) %>
                     </li>
                   <% end %>
                 </ul>
@@ -47,40 +57,43 @@
                 <%= link_to "Providers", "#" %>
                 <ul class="submenu menu vertical" data-submenu="data-submenu">
                   <li class="has-submenu">
-                    <%= link_to "Who we work with", "/providers/" %>
+                    <%= link_to "Who we work with", providers_path %>
                     <ul class="submenu menu vertical" data-submenu="data-submenu">
                       <% SERVICE_TYPES.each do |service| %>
                         <li>
-                          <%= link_to "#{service.capitalize} Providers", "/providers/?sort=#{service}" %>
+                          <%= link_to "#{service.capitalize} Providers", providers_path(sort: service) %>
                         </li>
                       <% end %>
                     </ul>
                   </li>
                   <li>
-                    <%= link_to "Work with us", "/providers/request" %>
+                    <%= link_to "Work with us", join_providers_path %>
                   </li>
                 </ul>
               </li>
               <li>
-                <%= link_to "Contact", "/contact/" %>
+                <%= link_to "FAQ", more_faq_path %>
+              </li>
+              <li>
+                <%= link_to "Contact", contact_path %>
               </li>
               <li class="has-submenu">
-                <a href="/more/">More</a>
+                <%= link_to "More", "#" %>
                 <ul class="submenu menu vertical" data-submenu="data-submenu">
                   <li>
-                    <%= link_to "TSA", "/more/tsa" %>
+                    <%= link_to "TSA", more_tsa_path %>
                   </li>
                   <li>
-                    <%= link_to "CTE", "/more/cte" %>
+                    <%= link_to "CTE", more_cte_path %>
                   </li>
                   <li>
-                    <%= link_to "About the Developers", "/more/devs" %>
+                    <%= link_to "About the Developers", more_devs_path %>
                   </li>
                   <li>
-                    <%= link_to "About the Site", "/more/site" %>
+                    <%= link_to "About the Site", more_site_path %>
                   </li>
                   <li>
-                    <%= link_to "About the Company", "/more/company" %>
+                    <%= link_to "About the Company", more_company_path %>
                   </li>
                 </ul>
               </li>
@@ -103,6 +116,21 @@
           </div>
         </div>
       </div>
+
+      <% if session[:siteadmin] %>
+        <div class="fill-primary top-bar">
+          <div class="top-bar-left">
+            <h5>Development Quick Links</h5>
+            <% {Doctor: new_doctor_path, Service: new_service_path, Provider: new_provider_path}.each do |name, func| %>
+            <%= link_to "#{load_svg "plus", "icon-xs", "Plus", "margin-right: 0.5rem;", "data-equalizer-watch=\"#{name}\""}<span data-equalizer-watch>#{name}</span>".html_safe, func, class: "button success margin-0 rounded", data: { equalizer: name} %>
+            <% end %>
+            <p style="margin: 0; margin-top: 0.5rem;"><small>This blue section, the console at the bottom, and any orange box titled "Admin Tools" will NOT be visible on the production side, and are only for development</small></p>
+          </div>
+          <div class="top-bar-right">
+            <%= link_to "#{load_svg "account-logout", "icon-xs icon-white", "Plus", "margin-right: 0.5rem;", "data-equalizer-watch=\"Logout\""}<span data-equalizer-watch=\"Logout\">Logout</span>".html_safe, more_logout_path, class: "button alert margin-0 rounded", data: {equalizer: "Logout"} %>
+          </div>
+        </div>
+      <% end %>
 
       <div class="content" style="padding-top: 1rem">
         <div class="grid-container">

@@ -1,0 +1,25 @@
+<div class="card">
+  <div class="card-divider grid-x">
+    <h3 class="cell"><%= provider.name %></h3>
+    <small class="cell color-dark-gray">
+      <%= provider.service_type.capitalize %>
+    </small>
+  </div>
+  <div class="card-section">
+    <p>Description:
+      <%= provider.description %>
+    </p>
+    <p>Name:
+      <%= provider.name %>
+    </p>
+    <p>Website:
+      <%= link_to provider.website, provider.website %>
+    </p>
+    <p>Phone:
+      <%= provider.phone %>
+    </p>
+    <p>Email:
+      <%= provider.email %>
+    </p>
+  </div>
+</div>

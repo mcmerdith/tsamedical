@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :doctors
   # resources :models
   # GET       models#index   /models          (models_path)
   # POST      models#create  /models
@@ -21,10 +22,16 @@ Rails.application.routes.draw do
     #get 'edit_admin', on: :member
   end
 
-  get 'providers/join';
-  resources :providers
+  resources :providers do
+    get 'join', on: :collection
+  end
 
   resources :services
+
+  get 'more/faq'
+  # The contact page has to perform like a contact but it doesn't actually need to do anything
+  # Matching get and post to the same controller is unwise, but in this scenario, it's fine
+  match '/contact', to: 'more#contact', via: [:get, :post]
 
   # "more" pages
   get 'more/tsa'
@@ -32,10 +39,8 @@ Rails.application.routes.draw do
   get 'more/devs'
   get 'more/site'
   get 'more/company'
-
-  # The contact page has to perform like a contact but it doesn't actually need to do anything
-  # Matching get and post to the same controller is unwise, but in this scenario, it's fine
-  match '/contact', to: 'more#contact', via: [:get, :post]
+  get 'more/authenticate'
+  get 'more/logout'
 
   # Error matching
   get '/500', to: 'errors#server'
