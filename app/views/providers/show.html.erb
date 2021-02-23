@@ -20,8 +20,8 @@
 </div>
 
 <% if session[:siteadmin] %>
-<div class="callout">
-  <h5>Admin Options</h5>
+<div class="callout fill-warning">
+  <h5>Admin Tools</h5>
   <%= link_to "Edit", edit_provider_path(@provider), class: "button secondary margin-0 rounded" %>
   <%= link_to "Delete", provider_path(@provider), class: "button alert margin-0 rounded", method: "delete" %>
 </div>
