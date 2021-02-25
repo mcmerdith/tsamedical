@@ -1,3 +1,101 @@
 <% @title = "Computer Science, Technology, and Engineering" %>
 
-<h1>Our Pathway Programs</h1>
+  <h1>Our Pathway Programs</h1>
+
+  <ul class="tabs grid-x" data-tabs="data-tabs" id="pathway-tabs">
+    <li class="tabs-title is-active cell auto">
+      <a href="#computer-science" aria-selected="true">Computer Science</a>
+    </li>
+    <li class="tabs-title cell auto">
+      <a href="#engineering">Engineering</a>
+    </li>
+  </ul>
+
+  <div class="tabs-content" data-tabs-content="pathway-tabs">
+    <div class="tabs-panel is-active" id="computer-science">
+      <div class="grid-x">
+        <div class="cell medium-3">
+          <ul class="vertical tabs" data-tabs="data-tabs" id="cs-tabs">
+            <li class="tabs-title is-active">
+              <a href="#csy1" aria-selected="true">Year 1</a>
+            </li>
+            <li class="tabs-title">
+              <a href="#csy2">Year 2</a>
+            </li>
+            <li class="tabs-title">
+              <a href="#csy3">Year 3</a>
+            </li>
+          </ul>
+        </div>
+        <div class="cell medium-9">
+          <div class="tabs-content vertical" data-tabs-content="cs-tabs">
+            <div class="tabs-panel is-active" id="csy1">
+              <h3>Exploring Computer Science</h3>
+              <p class="lead">Year 1 Computer Science Follows the ECS Curriculum, outlined
+                <%= link_to "here", "http://www.exploringcs.org/" %></p>
+              <p>Starting off in the first year of computer science, you explore what computer science is all about. You learn how to do basic HTML5 and Python by progressing through lessons that gradually build upon your knowledge and have you combine learned
+                methods as you progress. In this first year, you will learn basic coding skills and will have to code a website that shows basic knowledge of HTML5. After which you will show programming skills by programming a robot to do complex tasks in a given
+                amount of time to simulate pressure and further problem-solving. From changing styles of text, changing color schemes, and programming robots, Exploring Computer Science gives a great introduction to the fundamentals of computer science.
+              </p>
+            </div>
+            <div class="tabs-panel" id="csy2">
+              <h3>AP Computer Science Principles</h3>
+              <p class="lead">Year 2 Computer Science Follows the AP Guidelines, outlined
+                <%= link_to "here", "https://apcentral.collegeboard.org/courses/ap-computer-science-principles/course" %></p>
+              <p>Moving on to the next you will be learning the principles of computer science in a college-oriented class. It is important here that you use coding skills from last year, but be able to transform them with a new coding language: JavaScript.
+                Starting off with learning how computer science is used around the world, you will study a topic and have to show complex understanding by creating a visual and explaining the topic which you will then be evaluated by CollegeBoard. After which you
+                then move on to the next task of making a program using JavaScript which will also be evaluated by CollegeBoard based on criteria learned throughout the year.
+              </p>
+            </div>
+            <div class="tabs-panel" id="csy3">
+              <h3>AP Computer Science A (Java)</h3>
+              <p class="lead">Year 3 Computer Science Follows the AP Guidelines, outlined
+                <%= link_to "here", "https://apcentral.collegeboard.org/courses/ap-computer-science-a/course" %></p>
+              <p>The final year of computer science is centered around learning Java using an online website sponsored by Amazon. You start off learning simple topics, but then it gradually increases getting harder while incorporating previous topics learned. As
+                you get tested throughout the year, you will finally take a final test using all prior knowledge to show what you have learned.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tabs-panel" id="engineering">
+      <p>Our school has impeccable engineering programs that will prepare you for the future. With a variety of skills taught, one is ready to move on to the next step of life after following the Engineering Career Pathway. Offering 3 classes (One per
+        year), students can advance and see how it is to become an engineer. Just as important especially in today' nmms society, our school offers a variety of computer science courses which give you a general idea of different coding languages that are
+        popular among computer scientists.</p>
+      <div class="grid-x">
+        <div class="cell medium-3">
+          <ul class="vertical tabs" data-tabs="data-tabs" id="eng-tabs">
+            <li class="tabs-title is-active">
+              <a href="#engy1" aria-selected="true">Year 1</a>
+            </li>
+            <li class="tabs-title">
+              <a href="#engy2">Year 2</a>
+            </li>
+            <li class="tabs-title">
+              <a href="#engy3">Year 3</a>
+            </li>
+          </ul>
+        </div>
+        <div class="cell medium-9">
+          <div class="tabs-content vertical" data-tabs-content="eng-tabs">
+            <div class="tabs-panel is-active" id="engy1">
+              <p>The program starts off with basic engineering, which shows you what different types of engineers do and what they face. It is very important to know how different engineers contribute to the world. In the first year of engineering main ideas such
+                as: measuring, significant figures, research tactics, career options, problem-solving, and Computer Aided Design (CAD) help you develop basic skills to get you through the next years where it gets more and more hands on. At the end of the year, CAD
+                is used to build an automata which uses all the skills you learned in engineering and puts them all together.
+              </p>
+            </div>
+            <div class="tabs-panel" id="engy2">
+              <p>The 2nd year of engineering is a lot more math centered. You learn about different types of energy, and which are the most efficient. Moving forward, you learn about Fluid Dynamics and Static Trusses, which are subjects engineers deal with daily,
+                for example, the strength of a bridge you might cross every day was based on many concepts learned when dealing with static trusses. The second year of engineering is a way to see the concepts used around all the different branches of engineering and
+                see how many of them go hand in hand with each other.</p>
+            </div>
+            <div class="tabs-panel" id="engy3">
+              <p>In the final year of engineering, you move on to design and development. Here you put all your skills to the test. Starting off with problem-solving you must find a problem that affects people around the world without a solution or try to improve
+                a solution that already exists. You put research skills throughout engineering to find solutions that pertain to your problem solving using patents that are stamped around the world. After finding all the solutions and patents that exist (if any) you
+                then move on to making your own solution. After finding a solution you would prototype similar to that of a real engineer and showcase your solution to judges and other students involved in the engineering field to see how you did.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
