@@ -1,55 +1,89 @@
 <% @title = "About the Site" %>
 
-<h1 class="text-center">Built Using</h1>
-<div data-equalizer="header" data-equalize-by-row="true">
-  <div class="grid-x grid-margin-x" data-equalizer="body" data-equalize-by-row="true">
-    <div class="cell large-4 medium-6 card">
-      <div class="card-divider" data-equalizer-watch="header">
-        <%= image_tag "https://user-images.githubusercontent.com/9939075/38782856-2a64a43e-40fa-11e8-89cd-e873af03b3c4.png", alt: "Foundation for Sites 6 Logo", class: "float-center text-center align-self-middle" %>
+  <h1 class="text-center">Built Using</h1>
+  <div data-equalizer="header" data-equalize-by-row="true">
+    <div class="grid-x grid-margin-x" data-equalizer="body" data-equalize-by-row="true">
+      <div class="cell large-4 medium-6 card">
+        <div class="card-divider" data-equalizer-watch="header">
+          <%= image_tag "https://user-images.githubusercontent.com/9939075/38782856-2a64a43e-40fa-11e8-89cd-e873af03b3c4.png", alt: "Foundation for Sites 6 Logo", class: "float-center text-center align-self-middle" %>
+        </div>
+        <div class="card-section" data-equalizer-watch="body">
+          <p><%= link_to "Foundation for Sites 6", "https://get.foundation/sites.html" %></p>
+        </div>
       </div>
-      <div class="card-section" data-equalizer-watch="body">
-        <p><%= link_to "Foundation for Sites 6", "https://get.foundation/sites.html" %></p>
+      <div class="cell large-4 medium-6 card">
+        <div class="card-divider" data-equalizer-watch="header">
+          <h2 class="float-center text-center align-self-middle"><%= load_svg "heart", "icon-lg", "Heart", "margin-right: 0.5rem;" %>Open Iconic</h2>
+        </div>
+        <div class="card-section" data-equalizer-watch="body">
+          <p><%= link_to "Open Iconic", "www.useiconic.com/open" %></p>
+        </div>
       </div>
-    </div>
-    <div class="cell large-4 medium-6 card">
-      <div class="card-divider" data-equalizer-watch="header">
-        <h2 class="float-center text-center align-self-middle"><%= load_svg "heart", "icon-lg", "Heart", "margin-right: 0.5rem;" %>Open Iconic</h2>
+      <div class="cell large-4 medium-6 card">
+        <div class="card-divider" data-equalizer-watch="header">
+          <%= image_tag "https://brand.heroku.com/static/media/heroku-logotype-horizontal.81c49462.svg", alt: "Heroku Logo", class: "float-center text-center align-self-middle" %>
+        </div>
+        <div class="card-section" data-equalizer-watch="body">
+          <p><%= link_to "Heroku Web Hosting", "https://heroku.com/" %></p>
+        </div>
       </div>
-      <div class="card-section" data-equalizer-watch="body">
-        <p><%= link_to "Open Iconic", "www.useiconic.com/open" %></p>
+      <div class="cell large-4 medium-6 card">
+        <div class="card-divider grid-x grid-margin-x" data-equalizer-watch="header">
+          <%= image_tag "https://wiki.postgresql.org/images/a/a4/PostgreSQL_logo.3colors.svg", alt: "PostgreSQL Logo", class: "cell small-2 medium-3 float-center text-center align-self-middle" %>
+          <h3 class="cell auto float-center text-center align-self-middle">
+            PostgreSQL
+          </h3>
+        </div>
+        <div class="card-section" data-equalizer-watch="body">
+          <p><%= link_to "PostgreSQL", "https://www.postgresql.org/" %></p>
+        </div>
       </div>
-    </div>
-    <div class="cell large-4 medium-6 card">
-      <div class="card-divider" data-equalizer-watch="header">
-        <%= image_tag "https://brand.heroku.com/static/media/heroku-logotype-horizontal.81c49462.svg", alt: "Heroku Logo", class: "float-center text-center align-self-middle" %>
-      </div>
-      <div class="card-section" data-equalizer-watch="body">
-        <p><%= link_to "Heroku Web Hosting", "https://heroku.com/" %></p>
-      </div>
-    </div>
-    <div class="cell large-4 medium-6 card">
-      <div class="card-divider grid-x grid-margin-x" data-equalizer-watch="header">
-        <%= image_tag "https://wiki.postgresql.org/images/a/a4/PostgreSQL_logo.3colors.svg", alt: "PostgreSQL Logo", class: "cell small-2 medium-3 float-center text-center align-self-middle" %>
-        <h3 class="cell auto float-center text-center align-self-middle">
-          PostgreSQL
-        </h3>
-      </div>
-      <div class="card-section" data-equalizer-watch="body">
-        <p><%= link_to "PostgreSQL", "https://www.postgresql.org/" %></p>
-      </div>
-    </div>
-    <div class="cell large-4 medium-6 card">
-      <div class="card-divider" data-equalizer-watch="header">
-        <%= image_tag "https://upload.wikimedia.org/wikipedia/commons/6/62/Ruby_On_Rails_Logo.svg", alt: "Rails Logo", class: "float-center text-center align-self-middle" %>
-      </div>
-      <div class="card-section" data-equalizer-watch="body">
-        <p><%= link_to "Ruby on Rails", "https://rubyonrails.org/" %></p>
+      <div class="cell large-4 medium-6 card">
+        <div class="card-divider" data-equalizer-watch="header">
+          <%= image_tag "https://upload.wikimedia.org/wikipedia/commons/6/62/Ruby_On_Rails_Logo.svg", alt: "Rails Logo", class: "float-center text-center align-self-middle" %>
+        </div>
+        <div class="card-section" data-equalizer-watch="body">
+          <p><%= link_to "Ruby on Rails", "https://rubyonrails.org/" %></p>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<hr>
+  <hr>
 
-<p>All content was created during the 2021 school year for the sole use in this TSA Webmaster Submission</p>
-<p>All content and libraries are used non-commercially, with permission</p>
+  <p>All content was created during the 2021 school year for the sole use in this TSA Webmaster Submission</p>
+  <p>All content and libraries are used non-commercially, with permission</p>
+
+  <hr>
+
+  <h3>Image Citations</h3>
+  <% @citations = ["https://cdn.pixabay.com/photo/2013/07/18/10/59/pulse-trace-163708_960_720.jpg",
+"https://cdn.pixabay.com/photo/2015/07/10/20/54/stethoscope-840125_960_720.jpg",
+"https://cdn.pixabay.com/photo/2020/03/30/09/15/corona-4983590_960_720.jpg",
+"https://cdn.pixabay.com/photo/2016/02/08/23/36/isolated-1188036_960_720.png",
+"https://cdn.pixabay.com/photo/2018/03/27/03/53/doctor-3264979__340.jpg",
+"https://cdn.pixabay.com/photo/2021/02/09/06/44/doctor-5997500__340.jpg",
+"https://cdn.pixabay.com/photo/2020/03/07/17/15/coronavirus-4910360__340.jpg",
+"https://cdn.pixabay.com/photo/2019/03/20/10/42/doctor-4068134__340.jpg",
+"https://cdn.pixabay.com/photo/2020/03/25/12/17/corona-4967094_960_720.jpg",
+"https://www.crouse.org/wp-content/uploads/2019/02/Hospital-Prices.jpg ",
+"https://windhamhospital.org/Image%20Library/8b790c30-37d6-41c3-82df-131e47600db9/Unassigned/iStock-152948705.jpg",
+"https://www.amc.edu/images/radiology.jpg",
+"https://cdn.pixabay.com/photo/2015/05/26/09/05/doctor-784329__340.png",
+"https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+"https://images.unsplash.com/photo-1527613426441-4da17471b66d?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NHx8ZG9jdG9yc3xlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+"https://images.unsplash.com/photo-1527613426441-4da17471b66d?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NHx8ZG9jdG9yc3xlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+"https://images.unsplash.com/photo-1551190822-a9333d879b1f?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTd8fGRvY3RvcnN8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+"https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTl8fGRvY3RvcnN8ZW58MHx8MHw%3D&auto=format&fit=crop&w=500&q=60",
+"https://images.unsplash.com/photo-1585842378054-ee2e52f94ba2?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTh8fGRvY3RvcnN8ZW58MHx8MHw%3D&auto=format&fit=crop&w=500&q=60",
+"https://images.unsplash.com/photo-1610629457102-10648867ca5b?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MzB8fGRvY3RvcnN8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+"https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8OTZ8fGRvY3RvcnN8ZW58MHx8MHw%3D&auto=format&fit=crop&w=500&q=60",
+"https://images.unsplash.com/photo-1611736474674-948636066e32?ixid=MXwxMjA3fDB8MHxzZWFyY2h8OTN8fGRvY3RvcnN8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+"https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+"https://images.unsplash.com/photo-1612277795000-c6f7766e469d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80 "] %>
+
+    <% @index = 1 %>
+    <% @citations.each do |link| %>
+      <%= link_to "Image #{@index}", link %>
+      <% @index += 1 %>
+    <% end %>
