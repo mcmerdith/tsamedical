@@ -48,7 +48,7 @@
                 <ul class="submenu menu vertical" data-submenu="data-submenu">
                   <% SERVICE_TYPES.each do |service| %>
                     <li>
-                      <%= link_to "#{service.capitalize} Doctors", doctors_path(sort: service) %>
+                      <%= link_to "#{service.capitalize}", doctors_path(sort: service) %>
                     </li>
                   <% end %>
                 </ul>
@@ -61,7 +61,7 @@
                     <ul class="submenu menu vertical" data-submenu="data-submenu">
                       <% SERVICE_TYPES.each do |service| %>
                         <li>
-                          <%= link_to "#{service.capitalize} Providers", providers_path(sort: service) %>
+                          <%= link_to "#{service.capitalize}", providers_path(sort: service) %>
                         </li>
                       <% end %>
                     </ul>

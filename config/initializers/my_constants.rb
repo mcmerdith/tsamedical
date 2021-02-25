@@ -1,1 +1,1 @@
-SERVICE_TYPES = %w(medical psychiatry dermatology dental)
+SERVICE_TYPES = %w(medical psychiatry dermatology)

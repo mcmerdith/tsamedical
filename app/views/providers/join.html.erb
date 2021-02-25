@@ -1,0 +1,33 @@
+<h1>Work with us</h1>
+<p>We're always looking to expand our network of service providers, so if you would like to join our network, please fill out the form below and our staff will contact you as soon as possible.</p>
+<%= form_with do |form| %>
+<div class="grid-x">
+  <div class="cell large-6 input-group">
+    <%= form.label :fname, "First Name", class: "input-group-label" %>
+    <%= form.text_field :fname, class: "input-group-field", value: params[:fname] %>
+  </div>
+  <div class="cell large-6 input-group">
+    <%= form.label :lname, "Last Name", class: "input-group-label" %>
+    <%= form.text_field :lname, class: "input-group-field", value: params[:lname] %>
+  </div>
+</div>
+<p class="help-text">Your first and last name</p>
+
+<%= form.label :company, "Company Name" %>
+<%= form.email_field :email, value: params[:email] %>
+<p class="help-text">Your email address. Make sure it's accurate as we use this to respond to you.</p>
+
+<%= form.label :category, "Category" %>
+<%= form.select :category, [["General", 0], ["Appointments/Scheduling", 1], ["Feedback", 2], ["Issues (Technical)", 3], ["Issues (Other)", 4]] %>
+<p class="help-text">The type of request you're submitting</p>
+
+<%= form.label :content, "Your Inquiry" %>
+<%= form.text_area :content, value: params[:content] %>
+<p id="category-help-0" class="help-text">Please be as detailed as possible.</p>
+<p id="category-help-1" class="help-text hide">If you're referring to an appointment, please provide your Reference ID and Date of Birth.</p>
+<p id="category-help-2" class="help-text hide">Please provide detailed feedback so our team can best help you</p>
+<p id="category-help-3" class="help-text hide">If you're reporting a technical glitch or error, include what you were doing up to the error, along with any messages, logs, and timestamps</p>
+<p id="category-help-4" class="help-text hide">If you're reporting an error, include as much relevant information as you can so our team can best assist you</p>
+
+<%= form.submit "Submit", class: "button" %>
+<% end %>

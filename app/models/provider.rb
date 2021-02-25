@@ -8,7 +8,7 @@ class Provider < ApplicationRecord
   validates :description, presence: true
   validates :phone, presence: true#, format: { with: /\d{3}-\d{3}-\d{4}/, message: "Invalid phone number" }
   validates :email, presence: true#, format: { with: /\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/, message: "Invalid email address" }
-  validates :website, presence: true#, format: { with: /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/, message: "Invalid website" }
+  #validates :website, presence: true#, format: { with: /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/, message: "Invalid website" }
 
   has_many :services
   has_many :doctors

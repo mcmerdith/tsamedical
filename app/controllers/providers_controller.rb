@@ -3,6 +3,24 @@ class ProvidersController < ApplicationController
   before_action :set_provider, only: [:show, :edit, :update, :destroy]
 
   def join
+    if request.post?
+      if params[:company].blank? ||
+        params[:email].blank? ||
+        params[:phone].blank? ||
+        params[:services].blank? ||
+        params[:info].blank? then
+        # If the form is missing fields, show a fake error message
+        flash.now[:alert] = "One or more fields was blank or invalid"
+      else
+        # If the form is okay, show a fake confirm message
+        flash.now[:success] = "Your request has been submitted. Expected response time is 1-3 business days."
+        params[:company] = nil
+        params[:email] = nil
+        params[:phone] = nil
+        params[:services] = nil
+        params[:info] = nil
+      end
+    end
   end
 
   def index
