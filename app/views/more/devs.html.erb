@@ -1,2 +1,66 @@
-<h1>More#devs</h1>
-<p>Find me in app/views/more/devs.html.erb</p>
+<% @title = "About the Developers" %>
+
+<%
+# Name obfuscation
+if Rails.env.development?
+  @jasmin = "Jasmin"
+  @adam = "Adam"
+  @francis = "Francis"
+  @matt = "Matt"
+  @max = "Max"
+else
+  @jasmin = "2004060"
+  @adam = "2004053"
+  @francis = "2004062"
+  @matt = "2004061"
+  @max = "2004043"
+end
+%>
+
+<p>TSA Team ID: <span class="lead">2004-3</span></p>
+
+<div class="grid-x grid-margin-x">
+  <div class="cell card large-4 medium-6">
+    <div class="card-divider">
+      <h2><%= @jasmin %></h2>
+    </div>
+    <div class="card-section">
+      <p>Site Design</p>
+      <p>Research for <%= link_to "Services", services_path %> and <%= link_to "Doctors", doctors_path %></p>
+    </div>
+  </div>
+  <div class="cell card large-4 medium-6">
+    <div class="card-divider">
+      <h2><%= @adam %></h2>
+    </div>
+    <div class="card-section">
+      <p>Team Leader</p>
+      <p>Research for <%= link_to "Services", services_path %>, <%= link_to "Providers", providers_path %>, <%= link_to "About the Company", more_company_path %>, <%= link_to "FAQ", more_faq_path %>, and <%= link_to "Doctors", doctors_path %></p>
+    </div>
+  </div>
+  <div class="cell card large-4 medium-6">
+    <div class="card-divider">
+      <h2><%= @francis %></h2>
+    </div>
+    <div class="card-section">
+      <p>Logo Design and Image Assets</p>
+      <p>Research for <%= link_to "Services", services_path %></p>
+    </div>
+  </div>
+  <div class="cell card large-4 medium-6">
+    <div class="card-divider">
+      <h2><%= @matt %></h2>
+    </div>
+    <div class="card-section">
+      <p>Lead Programmer, Webmaster</p>
+    </div>
+  </div>
+  <div class="cell card large-4 medium-6">
+    <div class="card-divider">
+      <h2><%= @max %></h2>
+    </div>
+    <div class="card-section">
+      <p>Research for <%= link_to "About the Company", more_company_path %>, <%= link_to "Services", services_path %>, <%= link_to "FAQ", more_faq_path %>, and <%= link_to "Providers", providers_path %></p>
+    </div>
+  </div>
+</div>

@@ -1,43 +1,39 @@
-<div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit data-options="animInFromLeft:fade-in; animInFromRight:fade-in; animOutToLeft:fade-out; animOutToRight:fade-out;">
-  <div class="orbit-wrapper">
-    <div class="orbit-controls">
-      <button class="orbit-previous"><span class="show-for-sr">Previous Slide</span><%= load_svg('caret-left', 'icon-sm icon-white', 'Previous') %></button>
-      <button class="orbit-next"><span class="show-for-sr">Next Slide</span><%= load_svg('caret-right', 'icon-sm icon-white', 'Next') %></button>
+<%
+@images = {
+  "doctor-chat-clipart.webp" => "Chat online with professional doctors",
+  "work-from-home-1.webp" => "Schedule appointments from anywhere",
+  "scan.jpg" => "Expansive service network",
+  "stethescope-1.jpg" => "Variety of services"
+}
+%>
+
+  <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit="data-orbit" data-options="animInFromLeft:fade-in; animInFromRight:fade-in; animOutToLeft:fade-out; animOutToRight:fade-out;">
+    <div class="orbit-wrapper">
+      <div class="orbit-controls">
+        <button class="orbit-previous">
+          <span class="show-for-sr">Previous Slide</span><%= load_svg('caret-left', 'icon-sm icon-white', 'Previous') %></button>
+        <button class="orbit-next">
+          <span class="show-for-sr">Next Slide</span><%= load_svg('caret-right', 'icon-sm icon-white', 'Next') %></button>
+      </div>
+      <ul class="orbit-container">
+        <% @images.each do |asset, desc| %>
+          <li class="is-active orbit-slide">
+            <figure class="orbit-figure">
+              <%= image_tag "slider/#{asset}", alt: desc, class: "orbit-image" %>
+              <figcaption class="orbit-caption text-center"><%= desc %></figcaption>
+            </figure>
+          </li>
+        <% end %>
+      </ul>
     </div>
-    <ul class="orbit-container">
-      <li class="is-active orbit-slide">
-        <figure class="orbit-figure">
-          <img class="orbit-image" src="https://placehold.it/1200x600/999?text=Slide-1" alt="Space">
-          <figcaption class="orbit-caption">One.</figcaption>
-        </figure>
-      </li>
-      <li class="orbit-slide">
-        <figure class="orbit-figure">
-          <img class="orbit-image" src="https://placehold.it/1200x600/888?text=Slide-2" alt="Space">
-          <figcaption class="orbit-caption">Two.</figcaption>
-        </figure>
-      </li>
-      <li class="orbit-slide">
-        <figure class="orbit-figure">
-          <img class="orbit-image" src="https://placehold.it/1200x600/777?text=Slide-3" alt="Space">
-          <figcaption class="orbit-caption">Three.</figcaption>
-        </figure>
-      </li>
-      <li class="orbit-slide">
-        <figure class="orbit-figure">
-          <img class="orbit-image" src="https://placehold.it/1200x600/666&text=Slide-4" alt="Space">
-          <figcaption class="orbit-caption">Four.</figcaption>
-        </figure>
-      </li>
-    </ul>
-  </div>
-  <nav class="orbit-bullets">
-    <button class="is-active" data-slide="0">
-      <span class="show-for-sr">First slide details.</span>
-      <span class="show-for-sr" data-slide-active-label>Current Slide</span>
-    </button>
-    <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
-    <button data-slide="2"><span class="show-for-sr">Third slide details.</span></button>
-    <button data-slide="3"><span class="show-for-sr">Fourth slide details.</span></button>
-  </nav>
-</div>
+    <nav class="orbit-bullets">
+      <% @index = 0 %>
+        <% @images.each do |asset, desc| %>
+          <button class="<% if @index == 0 then "is-active" else "" end %>" data-slide="<%= @index %>">
+            <span class="show-for-sr"><%= desc %></span>
+            <% if @index == 0 %>
+              <span class="show-for-sr" data-slide-active-label="data-slide-active-label">Current Slide</span><% end %>
+          </button>
+        <% end %>
+      </nav>
+    </div>

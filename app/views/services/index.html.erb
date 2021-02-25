@@ -38,11 +38,11 @@
               </div>
             </div>
             <% if session[:siteadmin] %>
-            <div class="card-section fill-warning">
-              <h5>Admin Tools</h5>
-              <%= link_to "Edit", edit_service_path(service), class: "button secondary margin-0 rounded" %>
-              <%= link_to "Delete", service_path(service), class: "button alert margin-0 rounded", method: "delete" %>
-            </div>
+              <div class="card-section fill-warning">
+                <h5>Admin Tools</h5>
+                <%= link_to "Edit", edit_service_path(service), class: "button secondary margin-0 rounded" %>
+                <%= link_to "Delete", service_path(service), class: "button alert margin-0 rounded", method: "delete" %>
+              </div>
             <% end %>
           </div>
         </div>
@@ -55,3 +55,10 @@
       <% end %>
     </div>
   </span>
+
+  <hr>
+
+  <%= image_tag "services.jfif", class: "margin-bottom-1" %>
+
+  <h4>Quickly find services with our easy to use online interface</h4>
+  <p>Services can be filtered by type, or by provider or doctor giving you choices on how to find what you want</p>

@@ -1,2 +1,55 @@
-<h1>More#site</h1>
-<p>Find me in app/views/more/site.html.erb</p>
+<% @title = "About the Site" %>
+
+<h1 class="text-center">Built Using</h1>
+<div data-equalizer="header" data-equalize-by-row="true">
+  <div class="grid-x grid-margin-x" data-equalizer="body" data-equalize-by-row="true">
+    <div class="cell large-4 medium-6 card">
+      <div class="card-divider" data-equalizer-watch="header">
+        <%= image_tag "https://user-images.githubusercontent.com/9939075/38782856-2a64a43e-40fa-11e8-89cd-e873af03b3c4.png", alt: "Foundation for Sites 6 Logo", class: "float-center text-center align-self-middle" %>
+      </div>
+      <div class="card-section" data-equalizer-watch="body">
+        <p><%= link_to "Foundation for Sites 6", "https://get.foundation/sites.html" %></p>
+      </div>
+    </div>
+    <div class="cell large-4 medium-6 card">
+      <div class="card-divider" data-equalizer-watch="header">
+        <h2 class="float-center text-center align-self-middle"><%= load_svg "heart", "icon-lg", "Heart", "margin-right: 0.5rem;" %>Open Iconic</h2>
+      </div>
+      <div class="card-section" data-equalizer-watch="body">
+        <p><%= link_to "Open Iconic", "www.useiconic.com/open" %></p>
+      </div>
+    </div>
+    <div class="cell large-4 medium-6 card">
+      <div class="card-divider" data-equalizer-watch="header">
+        <%= image_tag "https://brand.heroku.com/static/media/heroku-logotype-horizontal.81c49462.svg", alt: "Heroku Logo", class: "float-center text-center align-self-middle" %>
+      </div>
+      <div class="card-section" data-equalizer-watch="body">
+        <p><%= link_to "Heroku Web Hosting", "https://heroku.com/" %></p>
+      </div>
+    </div>
+    <div class="cell large-4 medium-6 card">
+      <div class="card-divider grid-x grid-margin-x" data-equalizer-watch="header">
+        <%= image_tag "https://wiki.postgresql.org/images/a/a4/PostgreSQL_logo.3colors.svg", alt: "PostgreSQL Logo", class: "cell small-2 medium-3 float-center text-center align-self-middle" %>
+        <h3 class="cell auto float-center text-center align-self-middle">
+          PostgreSQL
+        </h3>
+      </div>
+      <div class="card-section" data-equalizer-watch="body">
+        <p><%= link_to "PostgreSQL", "https://www.postgresql.org/" %></p>
+      </div>
+    </div>
+    <div class="cell large-4 medium-6 card">
+      <div class="card-divider" data-equalizer-watch="header">
+        <%= image_tag "https://upload.wikimedia.org/wikipedia/commons/6/62/Ruby_On_Rails_Logo.svg", alt: "Rails Logo", class: "float-center text-center align-self-middle" %>
+      </div>
+      <div class="card-section" data-equalizer-watch="body">
+        <p><%= link_to "Ruby on Rails", "https://rubyonrails.org/" %></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<p>All content was created during the 2021 school year for the sole use in this TSA Webmaster Submission</p>
+<p>All content and libraries are used non-commercially, with permission</p>
