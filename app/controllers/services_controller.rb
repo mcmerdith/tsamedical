@@ -2,6 +2,11 @@ class ServicesController < ApplicationController
   http_basic_authenticate_with name: "webmaster2021", password: "doclineadmin", except: [:index, :show]
   before_action :set_service, only: [:show, :edit, :update, :destroy]
 
+  rescue_from PG::ForeignKeyViolation, with: :referenced_error
+  def referenced_error
+    redirect_to services_path, flash: { alert: "Can't delete Service as it is still referenced by a Provider or Doctor" }
+  end
+
   def index
     sort = request.GET[:sort]
 

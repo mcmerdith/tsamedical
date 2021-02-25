@@ -34,8 +34,9 @@
                 <%= link_to "Home", root_path %>
               </li>
               <li class="has-submenu">
-                <%= link_to "Services", services_path %>
+                <%= link_to "Services", "#/" %>
                 <ul class="submenu menu vertical" data-submenu="data-submenu">
+                  <li><%= link_to "All", services_path %></li>
                   <% SERVICE_TYPES.each do |service| %>
                     <li>
                       <%= link_to "#{service.capitalize} Services", services_path(sort: service) %>
@@ -44,8 +45,9 @@
                 </ul>
               </li>
               <li class="has-submenu">
-                <%= link_to "Doctors", doctors_path %>
+                <%= link_to "Doctors", "#/" %>
                 <ul class="submenu menu vertical" data-submenu="data-submenu">
+                  <li><%= link_to "All", doctors_path %></li>
                   <% SERVICE_TYPES.each do |service| %>
                     <li>
                       <%= link_to "#{service.capitalize}", doctors_path(sort: service) %>
@@ -54,11 +56,12 @@
                 </ul>
               </li>
               <li class="has-submenu">
-                <%= link_to "Providers", "#" %>
+                <%= link_to "Providers", "#/" %>
                 <ul class="submenu menu vertical" data-submenu="data-submenu">
                   <li class="has-submenu">
-                    <%= link_to "Who we work with", providers_path %>
+                    <%= link_to "Who we work with", "#/" %>
                     <ul class="submenu menu vertical" data-submenu="data-submenu">
+                      <li><%= link_to "All", providers_path %></li>
                       <% SERVICE_TYPES.each do |service| %>
                         <li>
                           <%= link_to "#{service.capitalize}", providers_path(sort: service) %>
@@ -78,7 +81,7 @@
                 <%= link_to "Contact", contact_path %>
               </li>
               <li class="has-submenu">
-                <%= link_to "More", "#" %>
+                <%= link_to "More", "#/" %>
                 <ul class="submenu menu vertical" data-submenu="data-submenu">
                   <li>
                     <%= link_to "TSA", more_tsa_path %>
@@ -102,7 +105,7 @@
           <div class="top-bar-right">
             <ul class="dropdown menu" data-dropdown-menu="data-dropdown-menu">
               <li class="has-submenu">
-                <a href="#">Appointments</a>
+                <a href="#/">Appointments</a>
                 <ul class="submenu menu vertical" data-submenu="data-submenu">
                   <li>
                     <%= link_to "My Appointments", my_appointments_path %>

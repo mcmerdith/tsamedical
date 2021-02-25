@@ -1,4 +1,5 @@
 class ServiceTypeValidator < ActiveModel::Validator
+
   def validate(record)
     if record.service_type != record.provider.service_type
       record.errors.add :service_type, 'The service must be the same type as it\'s provider'

@@ -20,7 +20,9 @@
               <p>Registered With <%= link_to doctor.provider.name, provider_path(doctor.provider) %></p>
               <h5>Services:</h5>
               <% doctor.services.each do |service| %>
-                <%= link_to service.name, service_path(service), class: "margin-left-1" %>
+                <div>
+                  <%= link_to service.name, service_path(service), class: "margin-left-1" %>
+                </div>
               <% end %>
             </div>
             <% if session[:siteadmin] %>

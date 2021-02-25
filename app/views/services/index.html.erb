@@ -16,7 +16,7 @@
             </div>
             <div class="card-section">
               <p><%= service.advertisement %></p>
-              <p><%= link_to "More", "##{service.id}", { data: { toggle: "#{service.id}_more" } } %></p>
+              <p><%= link_to "More", "#/", { data: { toggle: "#{service.id}_more" } } %></p>
 
               <div id="<%= service.id %>_more" data-toggler=".hide" class="hide">
                 <h5>Description</h5>
@@ -28,7 +28,9 @@
                 <hr>
                 <h5>Sessions Available With:</h5>
                 <% service.doctors.each do |doctor| %>
-                  <%= link_to doctor.name, doctor_path(doctor), class: "margin-left-1" %>
+                  <div>
+                    <%= link_to doctor.name, doctor_path(doctor), class: "margin-left-1" %>
+                  </div>
                 <% end %>
                 <% if service.doctors.size == 0 %>
                   <div class="callout warning">No doctors provide this service</div>

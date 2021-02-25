@@ -11,7 +11,7 @@
       <%= provider.description %>
     </p>
     <p>Website:
-      <%= link_to provider.website, provider.website %>
+      <%= link_to provider[:website].presence || provider_url(provider) %>
     </p>
     <p>Phone:
       <%= provider.phone %>

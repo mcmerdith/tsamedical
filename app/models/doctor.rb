@@ -1,4 +1,5 @@
 class TypeValidator < ActiveModel::Validator
+
   def validate(record)
     if record.service_type != record.provider.service_type
       record.errors.add :service_type, 'You must provide the same service as your parent company'

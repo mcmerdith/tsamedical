@@ -2,6 +2,11 @@ class DoctorsController < ApplicationController
   http_basic_authenticate_with name: "webmaster2021", password: "doclineadmin", except: [:index, :show]
   before_action :set_doctor, only: %i[show edit update destroy]
 
+  rescue_from PG::ForeignKeyViolation, with: :referenced_error
+  def referenced_error
+    redirect_to doctors_path, flash: { alert: "Can't delete Doctor as it is still referenced by a Service or Provider" }
+  end
+
   # GET /doctors
   # GET /doctors.json
   def index

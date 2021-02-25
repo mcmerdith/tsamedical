@@ -23,10 +23,10 @@
                   <%= provider.email %></p>
               </div>
               <h5>Visit their website</h5>
-              <%= link_to "View Site", "//#{provider.website}" %>
+              <%= link_to "View Site", provider[:website].presence || provider_url(provider) %>
               <hr>
               <h5>View available services</h5>
-              <p><%= link_to "More", "#", { data: { toggle: "#{provider.id}_more" } } %></p>
+              <p><%= link_to "More", "#/", { data: { toggle: "#{provider.id}_more" } } %></p>
 
               <div id="<%= provider.id %>_more" data-toggler=".hide" class="hide card-section">
                 <% Service.filter_by_provider(provider.id).each do |service| %>

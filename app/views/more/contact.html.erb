@@ -29,11 +29,11 @@
       <div class="card-section">
         <%= form_with do |form| %>
         <div class="grid-x">
-          <div class="cell large-6 input-group">
+          <div class="cell input-group">
             <%= form.label :fname, "First Name", class: "input-group-label" %>
             <%= form.text_field :fname, class: "input-group-field", value: params[:fname] %>
           </div>
-          <div class="cell large-6 input-group">
+          <div class="cell input-group">
             <%= form.label :lname, "Last Name", class: "input-group-label" %>
             <%= form.text_field :lname, class: "input-group-field", value: params[:lname] %>
           </div>
@@ -41,7 +41,7 @@
         <p class="help-text">Your first and last name</p>
 
         <%= form.label :email, "Email" %>
-        <%= form.email_field :email, value: params[:email] %>
+        <%= form.email_field :email, value: params[:email], placeholder: "example@example.com" %>
         <p class="help-text">Your email address. Make sure it's accurate as we use this to respond to you.</p>
 
         <%= form.label :category, "Category" %>

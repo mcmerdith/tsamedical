@@ -1,29 +1,33 @@
 <% @title = "Doctor: #{@doctor.name}" %>
 
-<div class="media-object">
-  <div class="media-object-section">
-    <%= image_tag @doctor.profile_picture_url, size: '300x300' %>
-  </div>
-  <div class="media-object-section card margin-0 width-100">
-    <div class="card-divider grid-x">
-      <h3 class="cell"><%= @doctor.name %></h3>
-      <small class="cell color-dark-gray"><%= @doctor.service_type.capitalize %></small>
+  <div class="media-object">
+    <div class="media-object-section">
+      <%= image_tag @doctor.profile_picture_url, size: '300x300' %>
     </div>
-    <div class="card-section">
-      <p>Member Since <%= @doctor.date_registered.strftime("%B %e, %Y") %></p>
-      <p>Registered With <%= link_to @doctor.provider.name, provider_path(@doctor.provider) %></p>
-      <h5>Services:</h5>
-      <% @doctor.services.each do |service| %>
-        <%= link_to service.name, service_path(service), class: "margin-left-1" %>
-      <% end %>
+    <div class="media-object-section card margin-0 width-100">
+      <div class="card-divider grid-x">
+        <h3 class="cell"><%= @doctor.name %></h3>
+        <small class="cell color-dark-gray"><%= @doctor.service_type.capitalize %></small>
+      </div>
+      <div class="card-section">
+        <p>Member Since
+          <%= @doctor.date_registered.strftime("%B %e, %Y") %></p>
+        <p>Registered With
+          <%= link_to @doctor.provider.name, provider_path(@doctor.provider) %></p>
+        <h5>Services:</h5>
+        <% @doctor.services.each do |service| %>
+          <div>
+            <%= link_to service.name, service_path(service), class: "margin-left-1" %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
-</div>
 
-<% if session[:siteadmin] %>
-<div class="callout fill-warning">
-  <h5>Admin Tools</h5>
-  <%= link_to "Edit", edit_doctor_path(@doctor), class: "button secondary margin-0 rounded" %>
-  <%= link_to "Delete", doctor_path(@doctor), class: "button alert margin-0 rounded", method: "delete" %>
-</div>
-<% end %>
+  <% if session[:siteadmin] %>
+    <div class="callout fill-warning">
+      <h5>Admin Tools</h5>
+      <%= link_to "Edit", edit_doctor_path(@doctor), class: "button secondary margin-0 rounded" %>
+      <%= link_to "Delete", doctor_path(@doctor), class: "button alert margin-0 rounded", method: "delete" %>
+    </div>
+  <% end %>

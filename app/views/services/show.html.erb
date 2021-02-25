@@ -1,7 +1,7 @@
-<% @title = "Services: #{@service.name}" %>
+<% @title = "Service: #{@service.name}" %>
 
 <h1><%= @service.name %></h1>
-<div class="grid-x">
+<div class="grid-x grid-margin-x">
   <div class="cell medium-4">
     <%= render 'providers/view', provider: @service.provider %>
   </div>
@@ -13,7 +13,7 @@
         <%= @service.description %>
       </p>
       <hr>
-      <h5><%= link_to "Call/Email", "#provider-details" %> for a quote</h5>
+      <h5>Call/Email for a quote</h5>
     </div>
   </div>
 </div>
