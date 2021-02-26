@@ -1,5 +1,9 @@
 <% @title = "Services" %>
 
+  <h4>Quickly find services with our easy to use online interface</h4>
+  <p>Services can be filtered by type, or by provider or doctor giving you choices on how to find what you want</p>
+  <%= image_tag "services.jfif", class: "margin-bottom-1" %>
+
   <span data-equalizer="body" data-equalize-on="medium" data-equalize-by-row="true">
     <div class="grid-x grid-margin-x" data-equalizer="head" data-equalize-on="medium" data-equalize-by-row="true">
       <% @services.each do |service| %>
@@ -55,10 +59,3 @@
       <% end %>
     </div>
   </span>
-
-  <hr>
-
-  <%= image_tag "services.jfif", class: "margin-bottom-1" %>
-
-  <h4>Quickly find services with our easy to use online interface</h4>
-  <p>Services can be filtered by type, or by provider or doctor giving you choices on how to find what you want</p>
