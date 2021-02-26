@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   end
 
   resources :providers do
-    get 'join', on: :collection
+    match 'join', on: :collection, via: [:get, :post]
   end
 
   resources :services
@@ -36,6 +36,7 @@ Rails.application.routes.draw do
   # "more" pages
   get 'more/tsa'
   get 'more/cte'
+  get 'more/worklog'
   get 'more/devs'
   get 'more/site'
   get 'more/company'

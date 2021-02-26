@@ -29,7 +29,7 @@
         <div class="top-bar" id="responsive-menu">
           <div class="top-bar-left">
             <ul class="dropdown menu" data-dropdown-menu="data-dropdown-menu">
-              <li class="menu-text"><%= image_tag 'docline-logo.png', alt: 'Logo', class: 'menu-icon' %>DocLine</li>
+              <li class="menu-text"><%= image_tag 'docline-logo-transparent.png', alt: 'Logo', class: 'menu-icon', style: 'margin-right: 0.5rem;' %>DocLine</li>
               <li>
                 <%= link_to "Home", root_path %>
               </li>
@@ -84,19 +84,27 @@
                 <%= link_to "More", "#/" %>
                 <ul class="submenu menu vertical" data-submenu="data-submenu">
                   <li>
-                    <%= link_to "TSA", more_tsa_path %>
-                  </li>
-                  <li>
-                    <%= link_to "CTE", more_cte_path %>
-                  </li>
-                  <li>
-                    <%= link_to "About the Developers", more_devs_path %>
-                  </li>
-                  <li>
-                    <%= link_to "About the Site", more_site_path %>
-                  </li>
-                  <li>
                     <%= link_to "About the Company", more_company_path %>
+                  </li>
+                  <li class="has-submenu">
+                    <%= link_to "TSA Supplementary", "#/" %>
+                    <ul class="submenu menu vertical" data-submenu="data-submenu">
+                      <li>
+                        <%= link_to "TSA Chapter", more_tsa_path %>
+                      </li>
+                      <li>
+                        <%= link_to "Career Programs", more_cte_path %>
+                      </li>
+                      <li>
+                        <%= link_to "About the Site", more_site_path %>
+                      </li>
+                      <li>
+                        <%= link_to "About the Developers", more_devs_path %>
+                      </li>
+                      <li>
+                        <%= link_to "Worklog", more_worklog_path %>
+                      </li>
+                    </ul>
                   </li>
                 </ul>
               </li>
